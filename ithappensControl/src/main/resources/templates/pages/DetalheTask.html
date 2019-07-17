@@ -29,10 +29,10 @@ tela_impressao.window.close();
 		<div class="panel-heading">
 			<div class="clearfix">
 				<h1 class="panel-title aw-titulo-panel">Detalhes</h1>
-				<a class="btn btn-default pull-right" th:href="@{/tasks}" title="Listar todas as Task"  rel="tooltip" data-placement="bottom">
+				<a class="btn btn-default pull-right" th:href="@{/ithappens}" title="Listar todas as Task"  rel="tooltip" data-placement="bottom">
 				<span class="glyphicon glyphicon-search"></span>Listar</a>		
 				<!--NovaTask-->
-				<a class="btn btn-success pull-right" id="tbn-nav-new" th:href="@{/tasks/novo}" sec:authorize="hasRole('ROLE_ADMIN')" 
+				<a class="btn btn-success pull-right" id="tbn-nav-new" th:href="@{/ithappens/novo}" sec:authorize="hasRole('ROLE_ADMIN')" 
 					title="Nova Task"  rel="tooltip" data-placement="bottom">
 					<span class="glyphicon glyphicon-plus-sign"></span>Nova Task
 				</a>
@@ -69,7 +69,7 @@ tela_impressao.window.close();
 			</div>
 
 			<div class="col-ms-1">
-				<label>Responsável: </label><span class="text-primary"><a th:text="${{task.responsaveis.nome}}" th:href="@{/tasks/horas/responsavel/list/{codigo}(codigo=${task.responsaveis.codigo})}">
+				<label>Responsável: </label><span class="text-primary"><a th:text="${{task.responsaveis.nome}}" th:href="@{/ithappens/horas/responsavel/list/{codigo}(codigo=${task.responsaveis.codigo})}">
 				</a></span> 
 			</div>
 			
@@ -133,7 +133,7 @@ tela_impressao.window.close();
 						
 			<!--Editar-->
 			<a class="btn btn-info" sec:authorize="hasRole('ROLE_ADMIN')"
-				th:href="@{/tasks/{codigo}(codigo=${task.codigo})}"
+				th:href="@{/ithappens/{codigo}(codigo=${task.codigo})}"
 				title="Editar"  rel="tooltip" data-placement="bottom">
 				<span class="glyphicon glyphicon-pencil">Editar</span>
 			</a>		
@@ -189,10 +189,10 @@ tela_impressao.window.close();
 		   				<tr th:each="horal : ${horas}" th:if="${task.codigo == horal.tasks.codigo}"> 
 		   											   						   					
 		   					
-		   					<td id="HSData">  <a class="text-right " th:text=" ${{horal.dataHora}} " th:href="@{/tasks/horas/{codigo}(codigo=${horal.codigo})}"></a> </td>
-		   					<td id="HSHoras">  <a class="text-center " th:text="| ${horal.horas}:Hs |" th:href="@{/tasks/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
-		   					<td id="HSDescricao">  <a class="text-left" th:text="${horal.descricao}" th:href="@{/tasks/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
-		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{horal.responsaveis.nome}} |" th:href="@{/tasks/horas/responsavel/list/{codigo}(codigo=${horal.responsaveis.codigo})}"></a></td>
+		   					<td id="HSData">  <a class="text-right " th:text=" ${{horal.dataHora}} " th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a> </td>
+		   					<td id="HSHoras">  <a class="text-center " th:text="| ${horal.horas}:Hs |" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
+		   					<td id="HSDescricao">  <a class="text-left" th:text="${horal.descricao}" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
+		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{horal.responsaveis.nome}} |" th:href="@{/ithappens/horas/responsavel/list/{codigo}(codigo=${horal.responsaveis.codigo})}"></a></td>
 		   					<td id="HSacao" class="text-center">
 								
 									<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoHorasModal"
@@ -220,7 +220,7 @@ tela_impressao.window.close();
 		        	<div class="panel col-md-12 uploader">
 		        	<!-- Form Anexo -->			        	
 						<div class="row panel">
-			        		<form method="POST" th:action="@{/tasks/anexo}" th:object="${anexo}">
+			        		<form method="POST" th:action="@{/ithappens/anexo}" th:object="${anexo}">
 							  <button type="submit" class="btn btn-success col-md-1">Enviar</button>
 							  <span class="alert" >
 							  

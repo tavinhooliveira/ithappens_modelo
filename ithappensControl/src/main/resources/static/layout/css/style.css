@@ -8,7 +8,7 @@
 .navbar-inverse {background-color: #444444; border-color: #000000;}
 .navbar-brand img {margin-left: 0; margin-bottom: 15px; height: 30px;}
 #pageNav {margin: 0; float: left;}
-#logo{margin-top: -5px;}
+#logo{margin-top: -5px;  margin-left: 15px;}
 
 /*DataHora*/
 #datahora{padding: 11px 0 0 0; float: right}
@@ -25,6 +25,10 @@
 
 #msgGeral {margin-top: 52px; margin-bottom: -77px; position: relative;}
 #msgError {margin-top: 52px; margin-bottom: -77px; position: relative;}
+
+#DashboardBtnPrincipal {
+    margin: 10px;
+}
 
 /*login*/
 #login{}
@@ -145,7 +149,7 @@
 /*Iphone 5 320px*/
 @media (min-width : 480px) and (max-width: 768px) {
 	
-.container-fluid {padding-right: 0px !important; padding-left: 0px !important;}
+.container-fluid {padding-right: 0px !important; padding-left: 0px !important; }
 
 #logo {margin-top: -4px;}
 

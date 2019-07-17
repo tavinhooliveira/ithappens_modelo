@@ -6,7 +6,7 @@
 	layout:decorate="~{layout/LayoutPadrao}">
 	
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" method="POST" th:action="@{/tasks/modulo}" th:object="${modulo}">
+	<form class="form-horizontal" method="POST" th:action="@{/ithappens/modulo}" th:object="${modulo}">
 
 		<div th:replace="/layout/MensagemGeral :: alert"></div>
 		<div th:replace="/layout/MensagemErro :: alert"></div>
@@ -15,7 +15,7 @@
 			<div class="panel-heading center">
 				<div class="clearfix">
 					<h1 class="panel-title aw-titulo-panel">Modulo</h1>					
-					<a class="btn btn-default pull-right" th:href="@{/tasks/modulo}">
+					<a class="btn btn-default pull-right" th:href="@{/ithappens/modulo}">
 					<span class="glyphicon glyphicon-search"></span>Listar Modulos</a>
 				</div>
 			</div>			

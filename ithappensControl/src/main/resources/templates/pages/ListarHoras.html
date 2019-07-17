@@ -12,7 +12,7 @@
 		<div class="panel-heading">
 			<div class="clearfix" id="btn_Nave">
 				<h1 class="panel-title aw-titulo-panel">Horas</h1>				
-				<a class="btn btn-default pull-right" th:href="@{/tasks}">
+				<a class="btn btn-default pull-right" th:href="@{/ithappens}">
 				<span class="glyphicon glyphicon-search"></span>Listar Task</a>
 			</div>
 		</div>
@@ -34,16 +34,16 @@
 		   			<tbody>
 		   				<tr th:each="horal : ${horas}"> 							   						   					
 		   					<td id="HSData" class="text-left" th:text="${{horal.dataHora}}"></td>
-		   					<td id="HSDescricao"><a class="text-left" th:text="${horal.descricao}" th:href="@{/tasks/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
-		   					<td id="HSCdTask"> <span th:text="|ID: ${horal.tasks.codigo} - |"></span><a class="text-left" th:text="${horal.tasks.titulo}"  th:href="@{/tasks/detalhes/{codigo}(codigo=${horal.tasks.codigo})}"></a></td>
+		   					<td id="HSDescricao"><a class="text-left" th:text="${horal.descricao}" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
+		   					<td id="HSCdTask"> <span th:text="|ID: ${horal.tasks.codigo} - |"></span><a class="text-left" th:text="${horal.tasks.titulo}"  th:href="@{/ithappens/detalhes/{codigo}(codigo=${horal.tasks.codigo})}"></a></td>
 		   					<td id="HSHoras" class="text-left" th:text="${horal.horas}"></td>
-		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{horal.responsaveis.nome}} |" th:href="@{/tasks/horas/responsavel/list/{codigo}(codigo=${horal.responsaveis.codigo})}"></a></td>
+		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{horal.responsaveis.nome}} |" th:href="@{/ithappens/horas/responsavel/list/{codigo}(codigo=${horal.responsaveis.codigo})}"></a></td>
 		   					<td id="HSacao" class="text-center">
-		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/horas/delete/{codigo}(codigo=${horal.codigo})}"
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/horas/delete/{codigo}(codigo=${horal.codigo})}"
 		   								title="Excluir" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-trash"></span>
 		   						</a>		   						  							   						
-		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/horas/{codigo}(codigo=${horal.codigo})}" 
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}" 
 		   								title="Editar" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-pencil"></span>
 		   						</a>

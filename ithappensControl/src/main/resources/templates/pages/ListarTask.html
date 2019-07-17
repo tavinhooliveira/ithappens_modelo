@@ -16,7 +16,7 @@
 		<div class="panel-heading">
 			<div class="clearfix">
 				<h1 class="panel-title aw-titulo-panel">Pesquisar</h1>
-				<a class="btn btn-success pull-right" th:href="@{/tasks/novo}" sec:authorize="hasRole('ROLE_ADMIN')"><span
+				<a class="btn btn-success pull-right" th:href="@{/ithappens/novo}" sec:authorize="hasRole('ROLE_ADMIN')"><span
 					class="glyphicon glyphicon-plus-sign"></span>Nova Task</a>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 							
 							<td id="tbtitulo">								
 								<a class="text-link"
-									th:href="@{/tasks/detalhes/{codigo}(codigo=${task.codigo})}">									
+									th:href="@{/ithappens/detalhes/{codigo}(codigo=${task.codigo})}">									
 									<span th:text="${task.titulo}"></span>
 								</a>										
 							</td>
@@ -75,7 +75,7 @@
 								</a>
 								<!--Editar-->
 								<a class="btn btn-link btn-xs"
-									th:href="@{/tasks/{codigo}(codigo=${task.codigo})}"
+									th:href="@{/ithappens/{codigo}(codigo=${task.codigo})}"
 									title="Editar" rel="tooltip" data-placement="top">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>																

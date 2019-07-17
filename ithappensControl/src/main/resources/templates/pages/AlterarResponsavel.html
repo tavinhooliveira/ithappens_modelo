@@ -6,7 +6,7 @@
 	layout:decorate="~{layout/LayoutPadrao}">
 	
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" method="POST" th:action="@{/tasks/responsavel}" th:object="${responsavel}">
+	<form class="form-horizontal" method="POST" th:action="@{/ithappens/responsavel}" th:object="${responsavel}">
 
 		<div th:replace="/layout/MensagemGeral :: alert"></div>
 		<div th:replace="/layout/MensagemErro :: alert"></div>
@@ -15,7 +15,7 @@
 			<div class="panel-heading center">
 				<div class="clearfix">
 					<h1 class="panel-title aw-titulo-panel">Responsável</h1>					
-					<a class="btn btn-default pull-right" th:href="@{/tasks/responsavel}">
+					<a class="btn btn-default pull-right" th:href="@{/ithappens/responsavel}">
 					<span class="glyphicon glyphicon-search"></span>Listar Responsável</a>
 				</div>
 			</div>			

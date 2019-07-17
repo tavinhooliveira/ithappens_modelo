@@ -10,7 +10,7 @@
 <div class="login-page" id="login">
   <div class="form">
   <img alt="Task" th:src="@{/layout/images/logoTask.png}"/>
-    <form class="login-form" th:action="@{/tasks/login}" method="POST">
+    <form class="login-form" th:action="@{/ithappens/login}" method="POST">
     	<input type="text" class="" placeholder="Usuário" autofocus="autofocus" name="username"/>
      	<input type="password" class="" placeholder="Senha" name="password"/>
       <button type="submit" class="btn btn-primary">login</button>
@@ -22,7 +22,7 @@
     <form class="register-form"  >
       <p>Ao Ultilizar um acesso do tipo: User, você poderar apenas vizualizar as tasks cadastradas!</p>
       <p>Para cadastrar uma nova task ou alterar você terá que ultilizar um usuario do tipo: Admim</p>
-		<!--<a th:href="@{/tasks/login}" class="btn btn-primary">Acesso Comum</a> -->
+		<!--<a th:href="@{/ithappens/login}" class="btn btn-primary">Acesso Comum</a> -->
       <p class="message">Acesso: <a href="#">Logar</a></p>
     </form>
   </div>
