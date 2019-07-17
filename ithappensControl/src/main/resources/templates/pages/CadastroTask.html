@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/LayoutPadrao}">
+
+<head>
+<title>Cadastro Task</title>
+</head>
+
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" th:action="@{/tasks}" th:object="${task}">
+		<div th:replace="/layout/MensagemGeral :: alert"></div>
+		<div th:replace="/layout/MensagemErro :: alert"></div>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading center">
+				<div class="clearfix">
+					<h1 class="panel-title aw-titulo-panel">Nova Task</h1>					
+					<a class="btn btn-default pull-right"  th:href="@{/tasks}">
+					<span class="glyphicon glyphicon-search"></span>Listar Task</a>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="">	<input type="hidden" th:field="*{codigo}" /> </div>
+
+				<div class="form-group">
+
+					<div class="col-md-2">
+						<label for="tipo" class="control-label">Tipo:</label> <select 
+							class="form-control" name="tipo" th:field="*{tipo}">
+							<option th:each="tipo : ${todasTasks}" th:value="${tipo}"
+								th:text="${tipo.descricao}"></option>
+						</select>
+					</div>
+					
+					<div class="col-md-2">
+						<label for="status" class="control-label">Status:</label> <select
+							class="form-control" name="status" th:field="*{status}">
+							<option th:each="status : ${todasTasksStatus}"
+								th:value="${status}" th:text="${status.descricao}"></option>
+						</select>
+					</div>					
+					
+					<div class="col-md-2"
+						th:classappend="${#fields.hasErrors('cd_cliente')} ? has-error">
+						<label for="cd_cliente" class="control-label">Código
+							Cliente:</label> <input type="text" class="form-control text-uppercase"
+							size="4" id="cd_cliente"
+							th:field="*{cd_cliente}" />
+					</div>					
+
+					<div class="col-md-2"
+						th:classappend="${#fields.hasErrors('dcr_relacionada')} ? has-error">
+						<label for="dcr_relacionada" class="control-label">Task
+							Relacionada:</label> <input type="text"
+							class="form-control text-uppercase" size="7"
+							id="dcr_relacionada"
+							th:field="*{dcr_relacionada}" />
+					</div>
+
+					<div class="col-md-2"
+						th:classappend="${#fields.hasErrors('dataInicial')} ? has-error">
+						<label for="dataInicial" class="control-label">Data
+							Inicial:<span class="text-danger">*</span></label>
+							<input type="text" class="form-control" id="dataInicial"
+							th:field="*{dataInicial}" data-provide="datepicker" 
+							data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+							data-date-autoclose="true" data-date-today-highlight="true"
+							data-date-orientation="bottom"/>
+							<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+					</div>
+											
+					<div class="col-md-2"
+						th:classappend="${#fields.hasErrors('dataPrevista')} ? has-error">
+						<label for="dataPrevista" class="control-label">Data Prevista:</label> <input type="text" class="form-control"
+							id="dataPrevista" th:field="*{dataPrevista}"
+							data-provide="datepicker"  data-date-format="dd/mm/yyyy"
+							data-date-language="pt-BR" data-date-autoclose="true"
+							data-date-today-highlight="true" data-date-orientation="bottom"/>
+					</div>
+
+				</div>
+				<div class="form-group">
+
+					
+					
+					
+					<div class="col-md-2">
+						<label for="responsaveis" class="control-label">Responsavel:<span class="text-danger">*</span></label><a class="text-primary pull-right glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#cadastroResponsavelModal"></a>
+						<select class="form-control" name="responsaveis" th:field="*{responsaveis}">
+							<option th:each="responsaveis : ${tdresponsaveis}"  
+								th:value="${responsaveis.codigo}" th:text="${responsaveis.nome}">
+							</option>
+						</select>
+					</div>
+					
+					<div class="col-md-2">
+						<label for="lideres" class="control-label">Lider:</label><a class="text-primary pull-right glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#cadastroLiderModal"></a>
+						<select class="form-control" name="lideres" th:field="*{lideres}">
+							<option th:each="lideres : ${tdlideres}"  
+								th:value="${lideres.codigo}" th:text="${lideres.nome}">
+							</option>
+						</select>
+					</div>
+					
+					<div class="col-md-2" th:classappend="${#fields.hasErrors('modulos')} ? has-error">
+						<label for="modulos" class="control-label">Modulo:</label><a class="text-primary pull-right footer glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#cadastroModuloModal"></a>
+						<select class="form-control" name="modulos" th:field="*{modulos}">
+							<option th:each="modulos : ${tdModulos}"  
+								th:value="${modulos.codigo}" th:text="${modulos.nome}">
+							</option>
+						</select>
+					</div>
+					
+					<div class="col-md-4">
+						<label for="link" class="control-label">Link Externo: <span class="text-warning">adicionar o http://</span></label>
+						<input type="text" class="form-control" id="link" placeholder="Link SDTT"
+						th:field="*{link}"/>
+					</div>
+					
+					<div class="col-md-2"
+						th:classappend="${#fields.hasErrors('dataConclusao')} ? has-error">
+						<label for="dataConclusao" class="control-label">Data de
+							Conclusão:</label> <input type="text" class="form-control"
+							id="dataConclusao" th:field="*{dataConclusao}"
+							data-provide="datepicker"  data-date-format="dd/mm/yyyy"
+							data-date-language="pt-BR" data-date-autoclose="true"
+							data-date-today-highlight="true" data-date-orientation="bottom" />
+					</div>
+					
+				</div>				
+				<div class="form-group">
+					
+					<div class="col-md-6"
+						th:classappend="${#fields.hasErrors('titulo')} ? has-error">
+						<label for="titulo" class="control-label">Titulo:<span class="text-danger">*</span></label> <input type="text"
+							class="form-control text-uppercase" placeholder="Titulo da Task"
+							id="titulo" th:field="*{titulo}" />
+					</div>
+					
+					
+					
+					<div class="col-md-6"
+						th:classappend="${#fields.hasErrors('linksvn')} ? has-error">
+						<label for="linksvn" class="control-label">Link SVN/GIT: <span class="text-warning">adicionar o http://</span></label>
+						<input type="text" class="form-control" id="linksvn" placeholder="Link SVN"
+						th:field="*{linksvn}"/>
+					</div>					
+				</div>
+				<div class="form-group">
+					<div class="col-md-12"
+						th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+						<label for="descricao" class="control-label">Descrição:</label>
+						<textarea rows="4" class="form-control" id="descricao" placeholder="Descrição da Task"
+						th:field="*{descricao}"></textarea>
+					</div>					
+									
+				</div>
+
+				<div class="form-group col-sm-12">
+					<button type="submit" class="btn btn-primary">Salvar</button>
+					<a href="javascript:history.back()" class="btn btn-default">Cancelar</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+</html>

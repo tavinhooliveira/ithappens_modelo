@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> 
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  
+<nav class="navbar  navbar-fixed-top  navbar-default" role="navigation" th:fragment="layout-header">
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" th:href="@{/tasks/dashboard}">
+	        <img alt="ContaControle" th:src="@{/layout/images/logoTask.png}" id="logo"/>
+	    </a>
+	    
+<!-- 	    <a class="glyphicon glyphicon-refresh navbar-brand" title="Refresh" rel="tooltip" data-placement="bottom" onclick="reload()"></a> -->
+	    
+	    <a class="navbar-brand" title="Refresh" rel="tooltip" data-placement="bottom" onclick="reload()"><img th:src="@{/layout/images/load.gif}" style="width: 37px; height: 27px; "/></a>
+	    
+	    <a class="glyphicon glyphicon-chevron-left navbar-brand" title="Voltar" rel="tooltip" data-placement="bottom" href="javascript:history.back()"></a>
+	    <a class="glyphicon glyphicon-chevron-right navbar-brand" title="Avançar" rel="tooltip" data-placement="bottom" href="javascript:history.forward()"></a>
+	    
+	    <a id="jsHoraAtul" th:replace="layout/DataHora :: layout-data-hora"></a>
+	    		
+        
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+		 </div>
+        <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                         
+		    	<li><a sec:authorize="hasRole('ROLE_USER')"> <i class="glyphicon glyphicon-user"></i><span th:text="${#authentication.name}" title="Usuario Logado"  rel="tooltip" data-placement="bottom"></span></a></li>
+		      	<li><a th:href="@{/tasks/logout}"><span class="glyphicon glyphicon-log-out" title="Sair" rel="tooltip" data-placement="bottom"></span></a></li> 
+	
+                <li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                  <a href="/tasks" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list"></span> Menu<b class="caret"></b></a>
+				
+                  <ul class="dropdown-menu pull-left" role="menu" >
+					<li><a href="#cadastroResponsavelModal" role="button" data-toggle="modal">Cadastrar Responsável</a></li>
+					<li><a href="#cadastroLiderModal" role="button" data-toggle="modal">Cadastrar Lider</a></li>
+					<li><a href="#cadastroModuloModal" role="button" data-toggle="modal">Cadastrar Módulo</a></li>
+					<li><a class="borderLinha"></a></li>
+                    <li><a th:href="@{/tasks/responsavel}" id="ListarResponsavel" role="button" data-toggle="modal">Listar Responsável</a></li>
+                    <li><a th:href="@{/tasks/lider}" id="ListarLider" role="button" data-toggle="modal">Listar Lider</a></li>
+                  </ul>
+
+                  </li>
+				</ul>
+            </div>
+          </div>		      	
+        </nav>
+
+
+</html>

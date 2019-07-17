@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> 
+
+<head>
+	<title>Dashboard</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h3>Dashboard</h3>
+		</div>
+	</div>
+	
+
+	<div class="container-fluid" id="DashboardBtnPrincipal">
+		<div class="row">
+			<div class="col-md-3" id="DashboardTask">
+				<a th:href="@{/tasks}">
+				<div class="aw-box">
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/task.png}"/>
+						<i class="fa  fa-heartbeat  fa-3x"></i>
+					<span class="pull-right text-info">Total:<b th:text="${{taskContTotal}}"></b></span>
+					</div>
+					<div class="aw-box__value">Tasks</div>
+					<small><span class="text-success">Open:</span><b th:text="${{taskContOpen}}"></b>  -  <span class="text-warning" >OnHold:</span><b th:text="${{taskContOnHold}}">05</b>  -  <span class="text-info">Closed:</span><b th:text="${{taskContClosed}}">20</b></small>  -  <span class="text-danger">Rejected:</span><b th:text="${{taskContRejected}}">20</b></small>
+				</div>
+				</a>
+			</div>
+			
+			<div class="col-md-3" id="DashboardPessoas">
+				
+				<div class="aw-box">
+					<div class="Dicon"><img th:src="@{/layout/images/dashb/persona.png}"/>
+						<i class="fa  fa-heartbeat  fa-3x"></i>
+					</div>
+					<div class="aw-box__value"><a>Pessoas</a></div>
+					<a th:href="@{/tasks/lider}"><small>Lideres:<b th:text="${{pessoasContLideres}}"></b></a> - <a th:href="@{/tasks/responsavel}">Responsaveis:<b th:text="${{pessoasContResponsavel}}"></b></small></a>
+				</div>
+				
+			</div>
+			
+			<div class="col-md-3" id="DashboardModulos">
+				<a th:href="@{/tasks/modulo}">
+				<div class="aw-box">
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/modulos.png}"/>
+						<i class="fa  fa-heartbeat  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">Modulos</div>
+					<small>Total = <b th:text="${{modulosAll}}"></b></small>
+				</div>
+				</a>
+			</div>
+			
+			<div class="col-md-3" id="DashboardHoras">
+				<a th:href="@{/tasks/horas}">
+				<div class="aw-box">
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/horas.png}"/>
+						<i class="fa  fa-heartbeat  fa-3x"></i>
+					</div>
+					<div class="aw-box__value">Horas</div>
+					<small>Horas Lançadas</small>
+				</div>
+				</a>
+			</div>
+			
+		</div>
+
+
+		<div class="row" id="graficos">
+			<div class="col-sm-6">
+				<div class="aw-graph-box">
+					<div class="aw-graph-box__header">
+						<h2 class="aw-graph-box__title">Tarefas <small>últimos 6 meses</small></h2>
+					</div>
+					<div class="aw-graph-box__content">
+						<div>
+							<img th:src="@{/layout/images/dashb/tarefas.gif}" style="width:500px; height:220px"/>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-6">
+				<div class="aw-graph-box">
+					<div class="aw-graph-box__header">
+						<h2 class="aw-graph-box__title">Ultimas Atualizações <small>últimos 5 dias</small></h2>
+					</div>
+					<div class="aw-graph-box__content">
+
+						<div>
+							<img th:src="@{/layout/images/dashb/graficotemp.png}" style="width:500px; height:220px"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<th:block layout:fragment="javascript-extra">	
+
+</th:block>
+
+</html>

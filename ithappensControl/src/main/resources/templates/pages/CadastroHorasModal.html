@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div class="modal fade" id="addHoras" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="addHoras-modal">
+	<div class="modal-dialog">
+		<form th:attr="data-url-base=@{/tasks/horas}" method="POST" th:object="${hora}">
+			
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Cadastro de Horas</h4>
+				</div>
+				<div class="modal-body col-md-12">
+					<p class="alert detalhes">Erro no JS task</p>
+					
+					
+					<input type="hidden"  name='tasks'  value='tasks' id="tasks"/>
+				
+					<div class="form-group">					
+						
+						<div class="col-md-4">
+							<label for="dataHora" class="control-label">Data:
+							<span class="text-danger">*</span></label> <input type="text" class="form-control" id="dataHora"
+								name="dataHora" data-provide="datepicker" 
+								data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
+								data-date-autoclose="true" data-date-today-highlight="true"
+								data-date-orientation="bottom"/>
+							<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
+						</div>
+						
+						<div class="col-md-3">
+							<label for="horas" class="control-label">Horas:</label>
+							<input type="text"  class="form-control"  id="horas" placeholder="0,0" name="horas" />
+						</div>
+						
+						<div class="col-md-5">
+						<label for="responsaveis" class="control-label">Responsavel:</label>
+						<select class="form-control" name="responsaveis" >
+							<option th:each="responsaveis : ${tdresponsaveis}"  
+								th:value="${responsaveis.codigo}" th:text="${responsaveis.nome}">
+							</option>
+						</select>
+						</div>
+					</div>
+					<div class="form-group">										
+						<div class="col-md-12">
+							<label for="descricao" class="control-label">Descricão:</label>
+							<input type="text" class="form-control" id="descricao" name="descricao"/>
+						</div>
+					
+					</div>	
+					
+				</div>
+				
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Inserir</button>
+					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+	
+</html>
+
+
+

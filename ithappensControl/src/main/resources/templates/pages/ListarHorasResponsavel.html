@@ -1,0 +1,76 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" -->
+<!-- 	xmlns:th="http://www.thymeleaf.org" -->
+<!-- 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" -->
+<!-- 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" -->
+<!-- 	layout:decorate="~{layout/LayoutPadrao}"> -->
+	
+<!-- <div layout:fragment="conteudo"> -->
+<!-- 	<div th:object="${responsavel}" >			 -->
+<!-- 	<div th:text="*{codigo}" ></div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+<!-- </html> -->
+
+
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}">
+	
+<section layout:fragment="conteudo">
+
+<div th:replace="/layout/MensagemGeral :: alert"></div>
+
+<div class="panel panel-primary" >
+		<div class="panel-heading">
+			<div class="clearfix" id="btn_Nave">
+				<h1 class="panel-title aw-titulo-panel">Horas</h1>				
+				<a class="btn btn-default pull-right" th:href="@{/tasks}">
+				<span class="glyphicon glyphicon-search"></span>Listar Task</a>
+			</div>
+		</div>
+	<div class="panel-body">
+	   			
+	   		<div class="table-responsive">
+		   		<table id="tabela" class="table table-striped table-bordered dt-responsive table-hover" >
+		   			<thead>
+		   				<tr>
+		   					<th id="HSListDatal" class="text-left col-md-1">Data<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="HSListDescricao" class="text-left">Descrição<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="HSListCdTask" class="text-left ">Task Relacionada<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="HSListHoras" class="text-left col-md-1">Horas<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="HSListResponsavel" class="text-left">Responsável<input type="text" class="form-control" id="txtColuna1"/></th>	   				
+		   					<th id="HSListacao" class="text-center col-md-1">Ação</th>
+		   				</tr>
+		   			</thead>
+		   				   			
+		   			<tbody>
+		   				<tr th:each="horal : ${horas}" th:if="${horal.responsaveis.codigo == responsavel.codigo}"> 							   						   					
+		   					<td id="HSListData" class="text-left" th:text="${{horal.dataHora}}"></td>
+		   					<td id="HSListDescricao"><a class="text-left" th:text="${horal.descricao}" th:href="@{/tasks/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
+		   					<td id="HSListCdTask"> <span th:text="|Codigo: ${horal.tasks.codigo} - |"></span><a class="text-left" th:text="${horal.tasks.titulo}"  th:href="@{/tasks/detalhes/{codigo}(codigo=${horal.tasks.codigo})}"></a></td>
+		   					<td id="HSListHoras" class="text-left" th:text="${horal.horas}"></td>
+		   					<td id="HSListResponsavel" class="text-left " th:text=" | ${{horal.responsaveis.nome}} | " ></td>
+		   					<td id="HSListacao" class="text-center">
+		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/horas/delete/{codigo}(codigo=${horal.codigo})}"
+		   								title="Excluir" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-trash"></span>
+		   						</a>		   						  							   						
+		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/horas/{codigo}(codigo=${horal.codigo})}" 
+		   								title="Editar" rel="tooltip" data-placement="top">
+		   							<span class="glyphicon glyphicon-pencil"></span>
+		   						</a>
+		   					</td>
+		   				</tr>
+		   			</tbody>
+		   		</table>
+		   	</div>
+	   	</div>
+
+</div>
+</section>
+</html>
