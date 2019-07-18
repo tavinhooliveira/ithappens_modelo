@@ -58,7 +58,7 @@ public class Task {
 	private String titulo;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_responsaveis")
+	@JoinColumn(name = "codigo_users")
 	private User users;
 	
 	@ManyToOne
@@ -66,8 +66,8 @@ public class Task {
 	private Client clients;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_modulos")
-	private Modulo modulos;
+	@JoinColumn(name = "codigo_branhcs")
+	private Branch branchs;
 		
 	@OneToMany(mappedBy = "tasks")
 	private List<Hora> horas;
@@ -216,12 +216,12 @@ public class Task {
 		this.clients = clients;
 	}
 
-	public Modulo getModulos() {
-		return modulos;
+	public Branch getBranchs() {
+		return branchs;
 	}
 
-	public void setModulos(Modulo modulos) {
-		this.modulos = modulos;
+	public void setBranchs(Branch branchs) {
+		this.branchs = branchs;
 	}
 
 	@Override

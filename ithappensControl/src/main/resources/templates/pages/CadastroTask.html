@@ -106,11 +106,11 @@
 						</select>
 					</div>
 					
-					<div class="col-md-2" th:classappend="${#fields.hasErrors('modulos')} ? has-error">
-						<label for="modulos" class="control-label">Modulo:</label><a class="text-primary pull-right footer glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#cadastroModuloModal"></a>
-						<select class="form-control" name="modulos" th:field="*{modulos}">
-							<option th:each="modulos : ${tdModulos}"  
-								th:value="${modulos.codigo}" th:text="${modulos.nome}">
+					<div class="col-md-2" th:classappend="${#fields.hasErrors('branchs')} ? has-error">
+						<label for="branchs" class="control-label">Filial:</label><a class="text-primary pull-right footer glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#cadastroBranchModal"></a>
+						<select class="form-control" name="branchs" th:field="*{branchs}">
+							<option th:each="branchs : ${tdbranchs}"  
+								th:value="${branchs.codigo}" th:text="${branchs.nome}">
 							</option>
 						</select>
 					</div>

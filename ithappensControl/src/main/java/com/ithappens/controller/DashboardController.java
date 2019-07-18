@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ithappens.repository.Clients;
-import com.ithappens.repository.Modulos;
+import com.ithappens.repository.Branchs;
 import com.ithappens.repository.Users;
 import com.ithappens.repository.Tasks;
 
@@ -27,7 +27,7 @@ public class DashboardController {
 	private Users users;
 	
 	@Autowired
-	private Modulos modulos;
+	private Branchs branchs;
 	
 	
 	//Dashboard
@@ -43,7 +43,7 @@ public class DashboardController {
 		mv.addObject("ContClients", clients.findByContClientsQTA());
 		mv.addObject("ContUser", users.findByContUserQTA());
 		
-		mv.addObject("modulosAll", modulos.findBymodulosAllQTA());
+		mv.addObject("ContBranchs", branchs.findByContBranchsQTA());
 
 		return mv;
 	}

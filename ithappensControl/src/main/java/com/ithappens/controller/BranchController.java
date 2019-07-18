@@ -12,54 +12,54 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ithappens.model.Modulo;
-import com.ithappens.repository.Modulos;
+import com.ithappens.model.Branch;
+import com.ithappens.repository.Branchs;
 
 @Controller
-@RequestMapping("/ithappens/modulo")
-public class ModulosController {
+@RequestMapping("/ithappens/branch")
+public class BranchController {
 	
-	private static final String CADASTRO_MODULO_VIEW = "/pages/AlterarModulos";
-	private static final String MODULO_VIEW = "/pages/ListarModulos";
+	private static final String CADASTRO_BRANCH_VIEW = "/pages/AlterarBranch";
+	private static final String BRANCH_VIEW = "/pages/ListarBranch";
 
 	
 	@Autowired
-	public Modulos modulos;
+	public Branchs branchs;
 	
 	
 	
 	// Cadastro Novo
 		@RequestMapping("/novo")
 		public ModelAndView novo() {
-			ModelAndView mv = new ModelAndView(CADASTRO_MODULO_VIEW);
-			mv.addObject(new Modulo());
+			ModelAndView mv = new ModelAndView(CADASTRO_BRANCH_VIEW);
+			mv.addObject(new Branch());
 			return mv;
 		}
 		
 		// list
 		@RequestMapping
 		public ModelAndView lista() {
-			List<Modulo> allModulos = modulos.findAll();
-			ModelAndView mv = new ModelAndView(MODULO_VIEW);
-			mv.addObject(new Modulo());
-			mv.addObject("modulos", allModulos);
+			List<Branch> allBranchs = branchs.findAll();
+			ModelAndView mv = new ModelAndView(BRANCH_VIEW);
+			mv.addObject(new Branch());
+			mv.addObject("branchs", allBranchs);
 			return mv;
 		}
 		
 		
 		// Salvar
 		@RequestMapping(method = RequestMethod.POST)
-		public String salvar(@Validated Modulo modulo, Errors errors,
+		public String salvar(@Validated Branch branch, Errors errors,
 				RedirectAttributes attributes) {
 			if (errors.hasErrors()) {
-				return CADASTRO_MODULO_VIEW;
+				return CADASTRO_BRANCH_VIEW;
 			}
 			try {
-				modulos.save(modulo);
-				attributes.addFlashAttribute("mensagem","Modulo Salvo com sucesso!");
-				return "redirect:/ithappens/novo";
+				branchs.save(branch);
+				attributes.addFlashAttribute("mensagem","Filial Salvo com sucesso!");
+				return "redirect:/ithappens/branch";
 			} catch (IllegalArgumentException e) {
-				return CADASTRO_MODULO_VIEW;
+				return CADASTRO_BRANCH_VIEW;
 			}
 		}
 		
@@ -67,9 +67,9 @@ public class ModulosController {
 		
 		// Editar
 		@RequestMapping("{codigo}")
-		public ModelAndView edicao(@PathVariable("codigo") Modulo modulo) {
-			ModelAndView mv = new ModelAndView(CADASTRO_MODULO_VIEW);
-			mv.addObject(modulo);
+		public ModelAndView edicao(@PathVariable("codigo") Branch branch) {
+			ModelAndView mv = new ModelAndView(CADASTRO_BRANCH_VIEW);
+			mv.addObject(branch);
 			return mv;
 		}
 		
@@ -77,11 +77,11 @@ public class ModulosController {
 		// Excluir
 		@RequestMapping(value = "/delete/{codigo}")
 		public String excluir(@PathVariable Long codigo,
-				@Validated Modulo modulo, Errors errors,
+				@Validated Branch branch, Errors errors,
 				RedirectAttributes attributes) {
-			modulos.delete(codigo);
-			attributes.addFlashAttribute("mensagem","Modulo excluído com sucesso!");
-			return "redirect:/ithappens/modulo";
+			branchs.delete(codigo);
+			attributes.addFlashAttribute("mensagem","Filial excluído com sucesso!");
+			return "redirect:/ithappens/branch";
 		}
 	
 	

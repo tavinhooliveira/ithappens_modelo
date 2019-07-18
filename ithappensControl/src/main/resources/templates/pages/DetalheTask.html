@@ -85,7 +85,7 @@ tela_impressao.window.close();
 			<label>Status: </label><strong><span class="text-primary" th:text="${task.status.descricao}" th:classappend="${task.open ? 'text-success' : 'text'}"></span></strong>
 			</div>
 			<div class="col-ms-1">
-				<label>Modulo:</label><span class="text-primary" th:text="${{task.modulos.nome}}"></span>
+				<label>Filial:</label><span class="text-primary" th:text="${{task.branchs.nome}}"></span>
 			</div>
 		
 			<div class="col-ms-1">

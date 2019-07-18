@@ -12,11 +12,9 @@
 <div class="panel panel-primary">
 		<div class="panel-heading">
 			<div class="clearfix" id="btn_Nave">
-				<h1 class="panel-title aw-titulo-panel">Modulos</h1>				
-				<a class="btn btn-default pull-right" th:href="@{/tasks}">
-				<span class="glyphicon glyphicon-search"></span>Listar Task</a>
+				<h1 class="panel-title aw-titulo-panel">Filial</h1>				
 				<!--Novo-->
-				<a class="btn btn-success pull-right" id="tbn-nav-new" href="#cadastroModuloModal" role="button" data-toggle="modal" sec:authorize="hasRole('ROLE_ADMIN')" 
+				<a class="btn btn-success pull-right" id="tbn-nav-new" href="#cadastroBranchModal" role="button" data-toggle="modal" sec:authorize="hasRole('ROLE_ADMIN')" 
 					title="Nova Task"  data-placement="top">
 					<span class="glyphicon glyphicon-plus-sign"></span>Novo
 				</a>
@@ -30,23 +28,23 @@
 		   			<thead>
 		   				<tr>
 		   					<th id="RP_acao" class="text-center col-md-1">Ação</th>
-		   					<th id="RP_responsavel" class="text-left">Modulo</th>	   				
+		   					<th id="RP_responsavel" class="text-left">Branchs</th>	   				
 		   				</tr>
 		   			</thead>
 		   				   			
 		   			<tbody>
-		   				<tr th:each="modulo : ${modulos}"> 							   						   					
+		   				<tr th:each="branch : ${branchs}"> 							   						   					
 		   					<td id="RP_acao" class="text-center">
-		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/modulo/{codigo}(codigo=${modulo.codigo})}" 
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/branch/{codigo}(codigo=${branch.codigo})}" 
 		   								title="Editar" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-pencil"></span>
 		   						</a>
-		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/modulo/delete/{codigo}(codigo=${modulo.codigo})}"
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/branch/delete/{codigo}(codigo=${branch.codigo})}"
 		   								title="Excluir" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-trash"></span>
 		   						</a>		   						  							   						
 		   					</td>
-		   					<td id="RP_responsavel" class="text-left" th:text="${modulo.nome}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${branch.nome}"></td>
 		   				</tr>
 		   			</tbody>
 		   		</table>

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Modulo {
+public class Branch {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Modulo {
 	
 	private String nome;
 	
-	@OneToMany(mappedBy = "modulos")
+	@OneToMany(mappedBy = "branchs")
 	private List<Task> tasks;
 
 	public Long getCodigo() {
@@ -60,7 +60,7 @@ public class Modulo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Modulo other = (Modulo) obj;
+		Branch other = (Branch) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

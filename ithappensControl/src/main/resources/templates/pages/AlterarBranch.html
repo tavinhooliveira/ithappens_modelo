@@ -6,7 +6,7 @@
 	layout:decorate="~{layout/LayoutPadrao}">
 	
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" method="POST" th:action="@{/ithappens/modulo}" th:object="${modulo}">
+	<form class="form-horizontal" method="POST" th:action="@{/ithappens/branch}" th:object="${branch}">
 
 		<div th:replace="/layout/MensagemGeral :: alert"></div>
 		<div th:replace="/layout/MensagemErro :: alert"></div>
@@ -14,9 +14,9 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading center">
 				<div class="clearfix">
-					<h1 class="panel-title aw-titulo-panel">Modulo</h1>					
-					<a class="btn btn-default pull-right" th:href="@{/ithappens/modulo}">
-					<span class="glyphicon glyphicon-search"></span>Listar Modulos</a>
+					<h1 class="panel-title aw-titulo-panel">Filiais</h1>					
+					<a class="btn btn-default pull-right" th:href="@{/ithappens/branch}">
+					<span class="glyphicon glyphicon-search"></span>Listar Filiais</a>
 				</div>
 			</div>			
 			<div class="panel-body">
@@ -26,9 +26,9 @@
 				<div class="form-group">			
 					<div class="col-md-4"
 						th:classappend="${#fields.hasErrors('nome')} ? has-error">
-						<label for="nome" class="control-label">Modulo:</label>
+						<label for="nome" class="control-label">Filial:</label>
 						<input type="text" class="form-control text-uppercase"
-							placeholder="Nome do Modulo" id="nome"
+							placeholder="Nome da Filial" id="nome"
 							th:field="*{nome}" />
 					</div>
 					
