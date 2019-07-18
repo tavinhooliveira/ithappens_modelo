@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ithappens.model.Anexo;
 import com.ithappens.model.Hora;
-import com.ithappens.model.Lider;
+import com.ithappens.model.Client;
 import com.ithappens.model.Modulo;
 import com.ithappens.model.User;
 import com.ithappens.model.StatusTask;
@@ -24,7 +24,7 @@ import com.ithappens.model.Task;
 import com.ithappens.model.TipoTask;
 import com.ithappens.repository.Anexos;
 import com.ithappens.repository.Horas;
-import com.ithappens.repository.Lideres;
+import com.ithappens.repository.Clients;
 import com.ithappens.repository.Modulos;
 import com.ithappens.repository.Users;
 import com.ithappens.repository.filter.TaskFilter;
@@ -45,7 +45,7 @@ public class TaskController {
 	private Users users;
 
 	@Autowired
-	private Lideres lideres;
+	private Clients clients;
 
 	@Autowired
 	private Modulos modulos;
@@ -74,10 +74,10 @@ public class TaskController {
 		return users.findAll();
 	}
 	
-	// Combo Lideres
-	@ModelAttribute("tdlideres")
-	public List<Lider> tdlideres() {
-		return lideres.findAll();
+	// Combo Users
+	@ModelAttribute("tdclients")
+	public List<Client> tdclients() {
+		return clients.findAll();
 	}
 	
 	// Combo Modulos
@@ -132,8 +132,8 @@ public class TaskController {
 		mv.addObject(task);
 		List<User> allUsers = users.findAll();
 		mv.addObject("tdusers", allUsers);
-		List<Lider> allLideres = lideres.findAll();
-		mv.addObject("tdlideres", allLideres);
+		List<Client> allClients = clients.findAll();
+		mv.addObject("tdclients", allClients);
 		List<Modulo> allModulos = modulos.findAll();
 		mv.addObject("tdModulos", allModulos);
 		return mv;

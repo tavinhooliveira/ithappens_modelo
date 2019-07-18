@@ -38,7 +38,7 @@ public class Hora {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_responsaveis")
+	@JoinColumn(name = "codigo_users")
 	private User users;
 	
 

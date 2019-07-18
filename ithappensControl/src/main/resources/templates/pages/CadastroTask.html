@@ -98,10 +98,10 @@
 					</div>
 					
 					<div class="col-md-2">
-						<label for="lideres" class="control-label">Lider:</label><a class="text-primary pull-right glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#cadastroLiderModal"></a>
-						<select class="form-control" name="lideres" th:field="*{lideres}">
-							<option th:each="lideres : ${tdlideres}"  
-								th:value="${lideres.codigo}" th:text="${lideres.nome}">
+						<label for="clients" class="control-label">Cliente:</label><a class="text-primary pull-right glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#cadastroClientModal"></a>
+						<select class="form-control" name="clients" th:field="*{clients}">
+							<option th:each="clients : ${tdclients}"  
+								th:value="${clients.codigo}" th:text="${clients.nome}">
 							</option>
 						</select>
 					</div>

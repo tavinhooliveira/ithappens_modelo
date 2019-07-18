@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Lider {
+public class Client {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Lider {
 	
 	private String email;
 	
-	@OneToMany(mappedBy = "lideres")
+	@OneToMany(mappedBy = "clients")
 	private List<Task> tasks;
 
 
@@ -82,9 +82,9 @@ public class Lider {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Lider))
+		if (!(obj instanceof Client))
 			return false;
-		Lider other = (Lider) obj;
+		Client other = (Client) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

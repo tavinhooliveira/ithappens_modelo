@@ -29,33 +29,33 @@
 					<span class="pull-right text-info">Total:<b th:text="${{taskContTotal}}"></b></span>
 					</div>
 					<div class="aw-box__value">Vendas</div>
-					<small>Total = <b th:text="${{modulosAll}}"></b></small>
+					<small>Total = <b th:text="${{taskAll}}"></b></small>
 				</div>
 				</a>
 			</div>
 			
 			<div class="col-md-3" id="DashboardPessoas">
-				<a th:href="@{/ithappens}">
+				<a th:href="@{/ithappens/user}">
 				<div class="aw-box">
 					<div class="Dicon"> <img th:src="@{/layout/images/dashb/persona.png}" width="60px;"/>
 						<i class="fa  fa-heartbeat  fa-3x"></i>
 					<span class="pull-right text-info"><b></b></span>
 					</div>
 					<div class="aw-box__value">Usuários</div>
-					<small>Total = <b th:text="${{modulosAll}}"></b></small>
+					<small>Total = <b th:text="${{pessoasContUser}}"></b></small>
 				</div>
 				</a>
 			</div>
 			
 			<div class="col-md-3" id="DashboardCliente">
-				<a th:href="@{/ithappens}">
+				<a th:href="@{/ithappens/client}">
 				<div class="aw-box">
 					<div class="Dicon"> <img th:src="@{/layout/images/dashb/clientes.png}" width="60px;"/>
 						<i class="fa  fa-heartbeat  fa-3x"></i>
 					<span class="pull-right text-info"><b></b></span>
 					</div>
 					<div class="aw-box__value">Clientes</div>
-					<small>Total = <b th:text="${{modulosAll}}"></b></small>
+					<small>Total = <b th:text="${{pessoasContClients}}"></b></small>
 				</div>
 				</a>
 			</div>

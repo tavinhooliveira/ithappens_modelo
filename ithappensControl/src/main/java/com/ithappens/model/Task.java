@@ -62,8 +62,8 @@ public class Task {
 	private User users;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_lideres")
-	private Lider lideres;
+	@JoinColumn(name = "codigo_clients")
+	private Client clients;
 	
 	@ManyToOne
 	@JoinColumn(name = "codigo_modulos")
@@ -208,15 +208,13 @@ public class Task {
 	}
 	
 	
-	public Lider getLideres() {
-		return lideres;
+	public Client getClients() {
+		return clients;
 	}
 
-	
-	public void setLideres(Lider lideres) {
-		this.lideres = lideres;
+	public void setClients(Client clients) {
+		this.clients = clients;
 	}
-	
 
 	public Modulo getModulos() {
 		return modulos;

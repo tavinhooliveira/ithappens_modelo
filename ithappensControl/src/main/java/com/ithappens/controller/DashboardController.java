@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ithappens.repository.Lideres;
+import com.ithappens.repository.Clients;
 import com.ithappens.repository.Modulos;
 import com.ithappens.repository.Users;
 import com.ithappens.repository.Tasks;
@@ -21,7 +21,7 @@ public class DashboardController {
 	private Tasks tasks;
 	
 	@Autowired
-	private Lideres liders;
+	private Clients clients;
 	
 	@Autowired
 	private Users users;
@@ -40,7 +40,7 @@ public class DashboardController {
 		mv.addObject("taskContClosed", tasks.findByTaskClosedQTA());
 		mv.addObject("taskContRejected", tasks.findByTaskRejectedQTA());
 		
-		mv.addObject("pessoasContLideres", liders.findBypessoasContLideresQTA());
+		mv.addObject("pessoasContClients", clients.findBypessoasContClientsQTA());
 		mv.addObject("pessoasContUser", users.findBypessoasContUserQTA());
 		
 		mv.addObject("modulosAll", modulos.findBymodulosAllQTA());
