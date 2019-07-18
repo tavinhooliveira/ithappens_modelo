@@ -15,7 +15,7 @@ public interface Clients extends JpaRepository<Client,Long> {
 	public Optional<Clients> findByNomeIgnoreCase (String nome);
 	
 	 @Query("SELECT count(codigo) FROM Client")
-	    public List<Client> findBypessoasContClientsQTA();
+	    public List<Client> findByContClientsQTA();
 		
 
 }

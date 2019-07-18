@@ -40,8 +40,8 @@ public class DashboardController {
 		mv.addObject("taskContClosed", tasks.findByTaskClosedQTA());
 		mv.addObject("taskContRejected", tasks.findByTaskRejectedQTA());
 		
-		mv.addObject("pessoasContClients", clients.findBypessoasContClientsQTA());
-		mv.addObject("pessoasContUser", users.findBypessoasContUserQTA());
+		mv.addObject("ContClients", clients.findByContClientsQTA());
+		mv.addObject("ContUser", users.findByContUserQTA());
 		
 		mv.addObject("modulosAll", modulos.findBymodulosAllQTA());
 

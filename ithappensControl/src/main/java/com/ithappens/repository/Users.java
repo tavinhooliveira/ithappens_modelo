@@ -15,6 +15,6 @@ public interface Users extends JpaRepository<User, Long>{
 	public Optional<Users> findByNomeIgnoreCase(String nome);
 	
 	@Query("SELECT count(codigo) FROM User")
-    public List<User> findBypessoasContUserQTA();
+    public List<User> findByContUserQTA();
 	
 }
