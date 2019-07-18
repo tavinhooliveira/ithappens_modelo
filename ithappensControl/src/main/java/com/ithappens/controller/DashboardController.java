@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ithappens.repository.Lideres;
 import com.ithappens.repository.Modulos;
-import com.ithappens.repository.Responsaveis;
+import com.ithappens.repository.Users;
 import com.ithappens.repository.Tasks;
 
 
@@ -24,7 +24,7 @@ public class DashboardController {
 	private Lideres liders;
 	
 	@Autowired
-	private Responsaveis responsaveis;
+	private Users users;
 	
 	@Autowired
 	private Modulos modulos;
@@ -41,7 +41,7 @@ public class DashboardController {
 		mv.addObject("taskContRejected", tasks.findByTaskRejectedQTA());
 		
 		mv.addObject("pessoasContLideres", liders.findBypessoasContLideresQTA());
-		mv.addObject("pessoasContResponsavel", responsaveis.findBypessoasContResponsavelQTA());
+		mv.addObject("pessoasContUser", users.findBypessoasContUserQTA());
 		
 		mv.addObject("modulosAll", modulos.findBymodulosAllQTA());
 

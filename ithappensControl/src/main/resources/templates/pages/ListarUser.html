@@ -12,11 +12,9 @@
 <div class="panel panel-primary">
 		<div class="panel-heading">
 			<div class="clearfix" id="btn_Nave">
-				<h1 class="panel-title aw-titulo-panel">Responsavel</h1>				
-				<a class="btn btn-default pull-right" th:href="@{/tasks}">
-				<span class="glyphicon glyphicon-search"></span>Listar Task</a>
+				<h1 class="panel-title aw-titulo-panel">Usuário</h1>				
 				<!--Novo-->
-				<a class="btn btn-success pull-right" id="tbn-nav-new" href="#cadastroResponsavelModal" role="button" data-toggle="modal" sec:authorize="hasRole('ROLE_ADMIN')" 
+				<a class="btn btn-success pull-right" id="tbn-nav-new" href="#cadastroUserModal" role="button" data-toggle="modal" sec:authorize="hasRole('ROLE_ADMIN')" 
 					title="Nova Task"  data-placement="top">
 					<span class="glyphicon glyphicon-plus-sign"></span>Novo
 				</a>
@@ -29,25 +27,25 @@
 		   			<thead>
 		   				<tr>
 		   					<th id="RP_acao" class="text-center col-md-1">Ação</th>
-		   					<th id="RP_responsavel" class="text-left">Responsavel</th>
+		   					<th id="RP_responsavel" class="text-left">Usuário</th>
 		   					<th id="RPemail" class="text-left">Email</th>	   				
 		   				</tr>
 		   			</thead>
 		   				   			
 		   			<tbody>
-		   				<tr th:each="responsavel : ${responsaveis}"> 							   						   					
+		   				<tr th:each="user : ${users}"> 							   						   					
 		   					<td id="RP_acao" class="text-center">
-		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/responsavel/{codigo}(codigo=${responsavel.codigo})}" 
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/user/{codigo}(codigo=${user.codigo})}" 
 		   								title="Editar" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-pencil"></span>
 		   						</a>
-		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/responsavel/delete/{codigo}(codigo=${responsavel.codigo})}"
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/user/delete/{codigo}(codigo=${user.codigo})}"
 		   								title="Excluir" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-trash"></span>
 		   						</a>		   						  							   						
 		   					</td>
-		   					<td id="RP_responsavel"> <a class="text-left" th:text="${responsavel.nome}" th:href="@{/tasks/horas/responsavel/list/{codigo}(codigo=${responsavel.codigo})}"></a></td>
-		   					<td id="RPemail" class="text-left" th:text="${responsavel.email}"></td>
+		   					<td id="RP_responsavel"> <a class="text-left" th:text="${user.nome}" th:href="@{/ithappens/horas/user/list/{codigo}(codigo=${user.codigo})}"></a></td>
+		   					<td id="RPemail" class="text-left" th:text="${user.email}"></td>
 		   				</tr>
 		   			</tbody>
 		   		</table>

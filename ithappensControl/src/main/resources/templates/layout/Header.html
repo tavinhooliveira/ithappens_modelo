@@ -19,7 +19,6 @@
 				alt="ContaControle" th:src="@{/layout/images/ithappens.jpg}"
 				id="logo" />
 			</a>
-			<!--  <a id="jsHoraAtul" th:replace="layout/DataHora :: layout-data-hora"></a> -->
 
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -43,22 +42,19 @@
 						class="glyphicon glyphicon-th-list"></span> Menu<b class="caret"></b></a>
 
 					<ul class="dropdown-menu pull-left" role="menu">
-						<li><a href="#cadastroResponsavelModal" role="button"
-							data-toggle="modal">Cadastrar Responsável</a></li>
+						<li><a href="#cadastroUserModal" role="button"
+							data-toggle="modal">Cadastrar Usuario</a></li>
 						<li><a href="#cadastroLiderModal" role="button"
 							data-toggle="modal">Cadastrar Lider</a></li>
 						<li><a href="#cadastroModuloModal" role="button"
 							data-toggle="modal">Cadastrar Módulo</a></li>
 						<li><a class="borderLinha"></a></li>
-						<li><a th:href="@{/ithappens/responsavel}"
-							id="ListarResponsavel" role="button" data-toggle="modal">Listar
+						<li><a th:href="@{/ithappens/user}"
+							id="ListarUser" role="button" data-toggle="modal">Listar
 								Responsável</a></li>
 						<li><a th:href="@{/ithappens/lider}" id="ListarLider"
 							role="button" data-toggle="modal">Listar Lider</a></li>
 						<li><a class="borderLinha"></a></li>
-						<li><a th:href="@{/ithappens/logout}"><span
-								class="glyphicon glyphicon-log-out" title="Sair" rel="tooltip"
-								data-placement="bottom"></span> Sair</a></li>
 					</ul>
 					
 					<li sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/ithappens/logout}"><span

@@ -39,15 +39,15 @@ public class Hora {
 	
 	@ManyToOne
 	@JoinColumn(name = "codigo_responsaveis")
-	private Responsavel responsaveis;
+	private User users;
 	
 
-	public Responsavel getResponsaveis() {
-		return responsaveis;
+	public User getUsers() {
+		return users;
 	}
 
-	public void setResponsaveis(Responsavel responsaveis) {
-		this.responsaveis = responsaveis;
+	public void setUsers(User users) {
+		this.users = users;
 	}
 
 	public String getHoras() {

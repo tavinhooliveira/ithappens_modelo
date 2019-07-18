@@ -4,18 +4,18 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/LayoutPadrao}">
 <section layout:fragment="conteudo">
-<div class="modal fade" id="cadastroResponsavelModal" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="cadastroResponsavel-modal">
+<div class="modal fade" id="cadastroUserModal" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="cadastroUser-modal">
 	<div class="modal-dialog">
-		<form class="form-horizontal" method="POST" th:action="@{/ithappens/responsavel}" th:object="${responsavel}">			
+		<form class="form-horizontal" method="POST" th:action="@{/ithappens/user}" th:object="${user}">			
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Cadastrar Responsável</h4>
+					<h4 class="modal-title">Cadastrar Usuário</h4>
 				</div>				
 				<div class="modal-body">
 			
 				<div class="form-group">			
 					<div class="col-md-6">
-						<label for="nome" class="control-label">Responsável:</label>
+						<label for="nome" class="control-label">Usuário:</label>
 						<input type="text" class="form-control text-uppercase" id="nome" name="nome" autofocus/>
 					</div>
 					

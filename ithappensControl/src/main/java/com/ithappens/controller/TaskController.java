@@ -18,7 +18,7 @@ import com.ithappens.model.Anexo;
 import com.ithappens.model.Hora;
 import com.ithappens.model.Lider;
 import com.ithappens.model.Modulo;
-import com.ithappens.model.Responsavel;
+import com.ithappens.model.User;
 import com.ithappens.model.StatusTask;
 import com.ithappens.model.Task;
 import com.ithappens.model.TipoTask;
@@ -26,7 +26,7 @@ import com.ithappens.repository.Anexos;
 import com.ithappens.repository.Horas;
 import com.ithappens.repository.Lideres;
 import com.ithappens.repository.Modulos;
-import com.ithappens.repository.Responsaveis;
+import com.ithappens.repository.Users;
 import com.ithappens.repository.filter.TaskFilter;
 import com.ithappens.service.CadastroTaskService;
 
@@ -42,7 +42,7 @@ public class TaskController {
 	private CadastroTaskService cadastrotaskservice;
 
 	@Autowired
-	private Responsaveis responsaveis;
+	private Users users;
 
 	@Autowired
 	private Lideres lideres;
@@ -68,10 +68,10 @@ public class TaskController {
 	}
 	
 	
-	// Combo Responsaveis
-	@ModelAttribute("tdresponsaveis")
-	public List<Responsavel> tdresponsaveis() {
-		return responsaveis.findAll();
+	// Combo Users
+	@ModelAttribute("tdusers")
+	public List<User> tdusers() {
+		return users.findAll();
 	}
 	
 	// Combo Lideres
@@ -130,8 +130,8 @@ public class TaskController {
 	public ModelAndView edicao(@PathVariable("codigo") Task task) {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(task);
-		List<Responsavel> allResponsaveis = responsaveis.findAll();
-		mv.addObject("tdresponsaveis", allResponsaveis);
+		List<User> allUsers = users.findAll();
+		mv.addObject("tdusers", allUsers);
 		List<Lider> allLideres = lideres.findAll();
 		mv.addObject("tdlideres", allLideres);
 		List<Modulo> allModulos = modulos.findAll();
@@ -146,8 +146,8 @@ public class TaskController {
 		mv.addObject(task);
 		List<Hora> allHoras = horas.findAll();
 		mv.addObject("horas", allHoras);
-		List<Responsavel> allResponsaveis = responsaveis.findAll();
-		mv.addObject("tdresponsaveis", allResponsaveis);
+		List<User> allUsers = users.findAll();
+		mv.addObject("tdusers", allUsers);
 		List<Anexo> allAnexos = anexos.findAll();
 		mv.addObject("anexos", allAnexos);
 

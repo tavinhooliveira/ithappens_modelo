@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Responsavel {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +19,10 @@ public class Responsavel {
 	
 	private String email;
 	
-	@OneToMany(mappedBy = "responsaveis")
+	@OneToMany(mappedBy = "users")
 	private List<Task> tasks;
 	
-	@OneToMany(mappedBy = "responsaveis")
+	@OneToMany(mappedBy = "users")
 	private List<Hora> horas;
 	
 		
@@ -82,7 +82,7 @@ public class Responsavel {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Responsavel other = (Responsavel) obj;
+		User other = (User) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

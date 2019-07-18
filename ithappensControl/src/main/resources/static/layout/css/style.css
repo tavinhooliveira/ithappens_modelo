@@ -30,8 +30,12 @@
     margin: 10px;
 }
 
+.panel-primary .panel-heading{
+	background: #337ab7 url(../images/header-bg.jpg) 0 0 repeat-x !important;
+}
+
 /*login*/
-#login{}
+.login-page #logo img{width: 60px}
 
 .borderLinha { border-bottom: 1px solid #dad9d9;}
 

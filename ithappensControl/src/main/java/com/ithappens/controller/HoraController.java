@@ -13,10 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ithappens.model.Hora;
-import com.ithappens.model.Responsavel;
+import com.ithappens.model.User;
 import com.ithappens.model.Task;
 import com.ithappens.repository.Horas;
-import com.ithappens.repository.Responsaveis;
+import com.ithappens.repository.Users;
 
 @Controller
 @RequestMapping("/ithappens/horas")
@@ -30,7 +30,7 @@ public class HoraController {
 	private Horas horas;
 
 	@Autowired
-	private Responsaveis responsaveis;
+	private Users users;
 
 	// Salvar
 	@RequestMapping(method = RequestMethod.POST)
@@ -62,9 +62,9 @@ public class HoraController {
 
 	// LitasTodasAsHorasDeUmResponsavel
 	@RequestMapping(value = "/responsavel/list/{codigo}")
-	public ModelAndView listaResposavelHoras(@PathVariable("codigo") Responsavel responsavel) {
+	public ModelAndView listaResposavelHoras(@PathVariable("codigo") User user) {
 		ModelAndView mv = new ModelAndView(LIST_HORAS_RESPONSAVEL_VIEW);
-		mv.addObject(responsavel);
+		mv.addObject(user);
 		List<Hora> allHoras = horas.findAll();
 		mv.addObject("horas", allHoras);
 		return mv;
@@ -77,8 +77,8 @@ public class HoraController {
 	public ModelAndView edicao(@PathVariable("codigo") Hora hora) {
 		ModelAndView mv = new ModelAndView(ALTER_HORAS_VIEW);
 		mv.addObject(hora);
-		List<Responsavel> allResponsavel = responsaveis.findAll();
-		mv.addObject(new Responsavel());
+		List<User> allResponsavel = users.findAll();
+		mv.addObject(new User());
 		mv.addObject("tdresponsaveis", allResponsavel);
 		return mv;
 	}

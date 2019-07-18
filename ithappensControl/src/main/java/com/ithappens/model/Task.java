@@ -59,7 +59,7 @@ public class Task {
 	
 	@ManyToOne
 	@JoinColumn(name = "codigo_responsaveis")
-	private Responsavel responsaveis;
+	private User users;
 	
 	@ManyToOne
 	@JoinColumn(name = "codigo_lideres")
@@ -199,12 +199,12 @@ public class Task {
 		this.titulo = titulo;
 	}
 	
-	public Responsavel getResponsaveis() {
-		return responsaveis;
+	public User getUsers() {
+		return users;
 	}
 
-	public void setResponsaveis(Responsavel responsaveis) {
-		this.responsaveis = responsaveis;
+	public void setUsers(User users) {
+		this.users = users;
 	}
 	
 	

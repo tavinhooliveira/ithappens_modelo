@@ -6,7 +6,7 @@
 	layout:decorate="~{layout/LayoutPadrao}">
 	
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" method="POST" th:action="@{/ithappens/responsavel}" th:object="${responsavel}">
+	<form class="form-horizontal" method="POST" th:action="@{/ithappens/user}" th:object="${user}">
 
 		<div th:replace="/layout/MensagemGeral :: alert"></div>
 		<div th:replace="/layout/MensagemErro :: alert"></div>
@@ -14,9 +14,9 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading center">
 				<div class="clearfix">
-					<h1 class="panel-title aw-titulo-panel">Responsável</h1>					
-					<a class="btn btn-default pull-right" th:href="@{/ithappens/responsavel}">
-					<span class="glyphicon glyphicon-search"></span>Listar Responsável</a>
+					<h1 class="panel-title aw-titulo-panel">Usuários</h1>					
+					<a class="btn btn-default pull-right" th:href="@{/ithappens/user}">
+					<span class="glyphicon glyphicon-search"></span>Listar Usuários</a>
 				</div>
 			</div>			
 			<div class="panel-body">
@@ -26,9 +26,9 @@
 				<div class="form-group">			
 					<div class="col-md-4"
 						th:classappend="${#fields.hasErrors('nome')} ? has-error">
-						<label for="nome" class="control-label">Responsavel:</label>
+						<label for="nome" class="control-label">Usuário:</label>
 						<input type="text" class="form-control text-uppercase"
-							placeholder="Nome do Responsavel" id="nome"
+							placeholder="Nome do Usuário" id="nome"
 							th:field="*{nome}" />
 					</div>
 					

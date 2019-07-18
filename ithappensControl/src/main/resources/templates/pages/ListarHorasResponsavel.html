@@ -49,12 +49,12 @@
 		   			</thead>
 		   				   			
 		   			<tbody>
-		   				<tr th:each="horal : ${horas}" th:if="${horal.responsaveis.codigo == responsavel.codigo}"> 							   						   					
+		   				<tr th:each="horal : ${horas}" th:if="${horal.users.codigo == user.codigo}"> 							   						   					
 		   					<td id="HSListData" class="text-left" th:text="${{horal.dataHora}}"></td>
 		   					<td id="HSListDescricao"><a class="text-left" th:text="${horal.descricao}" th:href="@{/tasks/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
 		   					<td id="HSListCdTask"> <span th:text="|Codigo: ${horal.tasks.codigo} - |"></span><a class="text-left" th:text="${horal.tasks.titulo}"  th:href="@{/tasks/detalhes/{codigo}(codigo=${horal.tasks.codigo})}"></a></td>
 		   					<td id="HSListHoras" class="text-left" th:text="${horal.horas}"></td>
-		   					<td id="HSListResponsavel" class="text-left " th:text=" | ${{horal.responsaveis.nome}} | " ></td>
+		   					<td id="HSListResponsavel" class="text-left " th:text=" | ${{horal.users.nome}} | " ></td>
 		   					<td id="HSListacao" class="text-center">
 		   						<a class="btn btn-link btn-xs" th:href="@{/tasks/horas/delete/{codigo}(codigo=${horal.codigo})}"
 		   								title="Excluir" rel="tooltip" data-placement="top">

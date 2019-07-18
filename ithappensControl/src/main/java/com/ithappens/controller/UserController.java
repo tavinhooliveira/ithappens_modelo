@@ -12,64 +12,61 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ithappens.model.Lider;
 import com.ithappens.model.User;
-import com.ithappens.repository.Lideres;
-
+import com.ithappens.model.Task;
+import com.ithappens.repository.Users;
 
 @Controller
-@RequestMapping("/ithappens/lider")
-public class LiderController {
-	
-	private static final String CADASTRO_LIDER_VIEW = "/pages/AlterarLider";
-	private static final String LIDER_VIEW = "/pages/ListarLideres";
-	
+@RequestMapping("/ithappens/user")
+public class UserController {
+
+	private static final String CADASTRO_USER_VIEW = "/pages/AlterarUser";
+	private static final String USER_VIEW = "/pages/ListarUser";
+
 	@Autowired
-	private Lideres	lideres;
-	
-	
+	private Users users;
+
 	// Cadastro Novo
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView(CADASTRO_LIDER_VIEW);
-		mv.addObject(new Lider());
+		ModelAndView mv = new ModelAndView(CADASTRO_USER_VIEW);
+		mv.addObject(new User());
 		return mv;
 	}
-	
+
 	// list
 	@RequestMapping
 	public ModelAndView lista() {
-		List<Lider> allLideres = lideres.findAll();
-		ModelAndView mv = new ModelAndView(LIDER_VIEW);
+		List<User> allUsers = users.findAll();
+		ModelAndView mv = new ModelAndView(USER_VIEW);
 		mv.addObject(new User());
-		mv.addObject("lideres", allLideres);
+		mv.addObject("users", allUsers);
 		return mv;
 	}
-	
-	// Salvar 
+
+	// Salvar Usuário
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Validated Lider lider, Errors errors,
+	public String salvar(@Validated User user, Task task, Errors errors,
 			RedirectAttributes attributes) {
+		attributes.addAttribute(task);
 		if (errors.hasErrors()) {
-			return CADASTRO_LIDER_VIEW;
+			return CADASTRO_USER_VIEW;
 		}
 		try {
-			lideres.save(lider);
-			attributes.addFlashAttribute("mensagem",
-					"Lider Salvo com sucesso!");
-			return "redirect:/ithappens/novo";
+			users.save(user);
+			attributes.addFlashAttribute("mensagem","Usuário Salvo com sucesso!");
+			return "redirect:/ithappens/user";
 		} catch (IllegalArgumentException e) {
-			return CADASTRO_LIDER_VIEW;
+			return CADASTRO_USER_VIEW;
 		}
 	}
-	
 	
 	
 	// Editar
 	@RequestMapping("{codigo}")
-	public ModelAndView edicao(@PathVariable("codigo") Lider lider) {
-		ModelAndView mv = new ModelAndView(CADASTRO_LIDER_VIEW);
-		mv.addObject(lider);
+	public ModelAndView edicao(@PathVariable("codigo") User user) {
+		ModelAndView mv = new ModelAndView(CADASTRO_USER_VIEW);
+		mv.addObject(user);
 		return mv;
 	}
 	
@@ -77,13 +74,12 @@ public class LiderController {
 	// Excluir
 	@RequestMapping(value = "/delete/{codigo}")
 	public String excluir(@PathVariable Long codigo,
-			@Validated Lider lider, Errors errors,
+			@Validated User user, Errors errors,
 			RedirectAttributes attributes) {
-		lideres.delete(codigo);
+		users.delete(codigo);
 		attributes.addFlashAttribute("mensagem",
-				"Lider excluída com sucesso!");
-		return "redirect:/ithappens/lider";
+				"Usuário excluído com sucesso!");
+		return "redirect:/ithappens/user";
 	}
-	
 
 }

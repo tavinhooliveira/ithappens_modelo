@@ -69,7 +69,7 @@ tela_impressao.window.close();
 			</div>
 
 			<div class="col-ms-1">
-				<label>Responsável: </label><span class="text-primary"><a th:text="${{task.responsaveis.nome}}" th:href="@{/ithappens/horas/responsavel/list/{codigo}(codigo=${task.responsaveis.codigo})}">
+				<label>Usuário: </label><span class="text-primary"><a th:text="${{task.users.nome}}" th:href="@{/ithappens/horas/user/list/{codigo}(codigo=${task.users.codigo})}">
 				</a></span> 
 			</div>
 			
@@ -192,7 +192,7 @@ tela_impressao.window.close();
 		   					<td id="HSData">  <a class="text-right " th:text=" ${{horal.dataHora}} " th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a> </td>
 		   					<td id="HSHoras">  <a class="text-center " th:text="| ${horal.horas}:Hs |" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
 		   					<td id="HSDescricao">  <a class="text-left" th:text="${horal.descricao}" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
-		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{horal.responsaveis.nome}} |" th:href="@{/ithappens/horas/responsavel/list/{codigo}(codigo=${horal.responsaveis.codigo})}"></a></td>
+		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{horal.users.nome}} |" th:href="@{/ithappens/horas/user/list/{codigo}(codigo=${horal.users.codigo})}"></a></td>
 		   					<td id="HSacao" class="text-center">
 								
 									<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoHorasModal"

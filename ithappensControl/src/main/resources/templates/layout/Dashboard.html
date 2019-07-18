@@ -21,10 +21,10 @@
 	<div class="container-fluid" id="DashboardBtnPrincipal">
 		<div class="row">
 			
-			<div class="col-md-3" id="DashboardTask">
+			<div class="col-md-3" id="DashboardVendas">
 				<a th:href="@{/ithappens}">
 				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/task.png}"/>
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/vendas.png}" width="60px;"/>
 						<i class="fa  fa-heartbeat  fa-3x"></i>
 					<span class="pull-right text-info">Total:<b th:text="${{taskContTotal}}"></b></span>
 					</div>
@@ -35,34 +35,37 @@
 			</div>
 			
 			<div class="col-md-3" id="DashboardPessoas">
-				
+				<a th:href="@{/ithappens}">
 				<div class="aw-box">
-					<div class="Dicon"><img th:src="@{/layout/images/dashb/persona.png}"/>
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/persona.png}" width="60px;"/>
 						<i class="fa  fa-heartbeat  fa-3x"></i>
+					<span class="pull-right text-info"><b></b></span>
 					</div>
-					<div class="aw-box__value"><a>Pessoas</a></div>
-					<a th:href="@{/ithappens/lider}"><small>Usuarios:<b th:text="${{pessoasContLideres}}"></b></a> | <a th:href="@{/ithappens/responsavel}">Clientes:<b th:text="${{pessoasContResponsavel}}"></b></small></a>
-				</div>
-				
-			</div>
-			
-			<div class="col-md-3" id="DashboardModulos">
-				<a th:href="@{/ithappens/modulo}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/modulos.png}"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					</div>
-					<div class="aw-box__value">Produtos</div>
+					<div class="aw-box__value">Usuários</div>
 					<small>Total = <b th:text="${{modulosAll}}"></b></small>
 				</div>
 				</a>
 			</div>
 			
-			<div class="col-md-3" id="DashboardHoras">
-				<a th:href="@{/ithappens/horas}">
+			<div class="col-md-3" id="DashboardCliente">
+				<a th:href="@{/ithappens}">
 				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/horas.png}"/>
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/clientes.png}" width="60px;"/>
 						<i class="fa  fa-heartbeat  fa-3x"></i>
+					<span class="pull-right text-info"><b></b></span>
+					</div>
+					<div class="aw-box__value">Clientes</div>
+					<small>Total = <b th:text="${{modulosAll}}"></b></small>
+				</div>
+				</a>
+			</div>
+			
+			<div class="col-md-3" id="DashboardTask">
+				<a th:href="@{/ithappens}">
+				<div class="aw-box">
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/filiais.png}" width="60px;"/>
+						<i class="fa  fa-heartbeat  fa-3x"></i>
+					<span class="pull-right text-info"><b></b></span>
 					</div>
 					<div class="aw-box__value">Filiais</div>
 					<small>Total = <b th:text="${{modulosAll}}"></b></small>
@@ -70,44 +73,46 @@
 				</a>
 			</div>
 			
-			<div class="col-md-3" id="DashboardHoras">
-				<a th:href="@{/ithappens/horas}">
+			<div class="col-md-3" id="DashboardTask">
+				<a th:href="@{/ithappens}">
 				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/horas.png}"/>
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/produtos.png}" width="60px;"/>
 						<i class="fa  fa-heartbeat  fa-3x"></i>
+					<span class="pull-right text-info"><b></b></span>
 					</div>
-					<div class="aw-box__value">Pedidos</div>
-					<small><span class="text-success">Ativo:</span><b th:text="${{taskContOpen}}"></b>  -  <span class="text-warning" >Cancelado:</span><b th:text="${{taskContOnHold}}">05</b>  -  <span class="text-info">Processado:</span><b th:text="${{taskContClosed}}">20</b></small></small>
+					<div class="aw-box__value">Produtos</div>
+					<small>Total = <b th:text="${{modulosAll}}"></b></small>
+				</div>
+				</a>
+			</div>			
+					
+			<div class="col-md-3" id="DashboardTask">
+				<a th:href="@{/ithappens}">
+				<div class="aw-box">
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/pagamentos.png}" width="60px;"/>
+						<i class="fa  fa-heartbeat  fa-3x"></i>
+					<span class="pull-right text-info"><b></b></span>
+					</div>
+					<div class="aw-box__value">Pagamentos</div>
+					<small>Total = <b th:text="${{modulosAll}}"></b></small>
 				</div>
 				</a>
 			</div>
-			
-			<div class="col-md-3" id="DashboardHoras">
-				<a th:href="@{/ithappens/horas}">
+			<div class="col-md-3" id="DashboardTask">
+				<a th:href="@{/ithappens}">
 				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/horas.png}"/>
+					<div class="Dicon"> <img th:src="@{/layout/images/dashb/estoque.png}" width="60px;"/>
 						<i class="fa  fa-heartbeat  fa-3x"></i>
+					<span class="pull-right text-info"><b></b></span>
 					</div>
 					<div class="aw-box__value">Estoque</div>
-					<small>Consulta de Itens</small>
+					<small>Total = <b th:text="${{modulosAll}}"></b></small>
 				</div>
 				</a>
 			</div>
+						
 			
-			<div class="col-md-3" id="DashboardHoras">
-				<a th:href="@{/ithappens/horas}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/horas.png}"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					</div>
-					<div class="aw-box__value">Relatórios</div>
-					<small>Relatórios & Extratos</small>
-				</div>
-				</a>
-			</div>
-
 		</div>
-
 	</div>
 </section>
 
