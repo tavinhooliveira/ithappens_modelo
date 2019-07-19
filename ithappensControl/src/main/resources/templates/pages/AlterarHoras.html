@@ -6,7 +6,7 @@
 	layout:decorate="~{layout/LayoutPadrao}">
 	
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" method="POST" th:action="@{/ithappens/horas}" th:object="${hora}">
+	<form class="form-horizontal" method="POST" th:action="@{/ithappens/orderedItems}" th:object="${orderedItem}">
 
 		<div th:replace="/layout/MensagemGeral :: alert"></div>
 		<div th:replace="/layout/MensagemErro :: alert"></div>
@@ -14,9 +14,9 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading center">
 				<div class="clearfix">
-					<h1 class="panel-title aw-titulo-panel">Horas</h1>					
-					<a class="btn btn-default pull-right" th:href="@{/ithappens/horas}">
-					<span class="glyphicon glyphicon-search"></span>Listar Horas</a>
+					<h1 class="panel-title aw-titulo-panel">Pedidoss</h1>					
+					<a class="btn btn-default pull-right" th:href="@{/ithappens/orderedItems}">
+					<span class="glyphicon glyphicon-search"></span>Listar Pedidoss</a>
 				</div>
 			</div>			
 			<div class="panel-body">
@@ -24,21 +24,10 @@
 			<div class=""> <input type="hidden" th:field="*{codigo}" /></div>
 			<div class=""> <input type="hidden" th:field="*{sales}" /></div>
 			
-				<div class="form-group">			
-					<div class="col-md-2">
-							<label for="dataHora" class="control-label">Data:
-							<span class="text-danger">*</span></label>
-							<input type="text" class="form-control block" disabled="disabled" id="dataHora"
-								name="dataHora" data-provide="datepicker" 
-								data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
-								data-date-autoclose="true" data-date-today-highlight="true"
-								data-date-orientation="bottom" th:field="*{dataHora}"/>
-							<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
-						</div>
-						
+				<div class="form-group">								
 						<div class="col-md-1">
-							<label for="horas" class="control-label">Horas:</label>
-							<input type="text"  class="form-control block" disabled="disabled" placeholder="0,5"  id="horas" name="horas" th:field="*{horas}"/>
+							<label for="orderedItems" class="control-label">Pedidoss:</label>
+							<input type="text"  class="form-control block" disabled="disabled" placeholder="0,5"  id="orderedItems" name="orderedItems" th:field="*{orderedItems}"/>
 						</div>
 						
 						<div class="col-md-2">

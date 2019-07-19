@@ -11,9 +11,9 @@
 <div class="panel panel-primary" >
 		<div class="panel-heading">
 			<div class="clearfix" id="btn_Nave">
-				<h1 class="panel-title aw-titulo-panel">Horas</h1>				
+				<h1 class="panel-title aw-titulo-panel">Pedidos</h1>				
 				<a class="btn btn-default pull-right" th:href="@{/ithappens}">
-				<span class="glyphicon glyphicon-search"></span>Listar Task</a>
+				<span class="glyphicon glyphicon-search"></span>Listar Vendas</a>
 			</div>
 		</div>
 	<div class="panel-body">
@@ -25,25 +25,25 @@
 		   					<th id="HSDatal" class="text-left col-md-1">Data<input type="text" class="form-control" id="txtColuna1"/></th>
 		   					<th id="HSDescricao" class="text-left">Descrição<input type="text" class="form-control" id="txtColuna2"/></th>
 		   					<th id="HSCdTask" class="text-left ">Task Relacionada<input type="text" class="form-control" id="txtColuna3"/></th>
-		   					<th id="HSHoras" class="text-left ">Horas<input type="text" class="form-control" id="txtColuna4"/></th>
+		   					<th id="HSOrderedItems" class="text-left ">Pedidos<input type="text" class="form-control" id="txtColuna4"/></th>
 		   					<th id="HSResponsavel" class="text-left">Responsável<input type="text" class="form-control" id="txtColuna5"/></th>	   				
 		   					<th id="HSacao" class="text-center col-md-1">Ação</th>
 		   				</tr>
 		   			</thead>
 		   				   			
 		   			<tbody>
-		   				<tr th:each="horal : ${horas}"> 							   						   					
-		   					<td id="HSData" class="text-left" th:text="${{horal.dataHora}}"></td>
-		   					<td id="HSDescricao"><a class="text-left" th:text="${horal.descricao}" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
-		   					<td id="HSCdTask"> <span th:text="|ID: ${horal.sales.codigo} - |"></span><a class="text-left" th:text="${horal.sales.titulo}"  th:href="@{/ithappens/detalhes/{codigo}(codigo=${horal.sales.codigo})}"></a></td>
-		   					<td id="HSHoras" class="text-left" th:text="${horal.horas}"></td>
-		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{horal.users.nome}} |" th:href="@{/ithappens/horas/user/list/{codigo}(codigo=${horal.users.codigo})}"></a></td>
+		   				<tr th:each="orderedItem : ${orderedItems}"> 							   						   					
+		   					<td id="HSData" class="text-left" th:text="${{orderedItem.dataOrderedItem}}"></td>
+		   					<td id="HSDescricao"><a class="text-left" th:text="${orderedItem.descricao}" th:href="@{/ithappens/orderedItems/{codigo}(codigo=${orderedItem.codigo})}"></a></td>
+		   					<td id="HSCdTask"> <span th:text="|ID: ${orderedItem.sales.codigo} - |"></span><a class="text-left" th:text="${orderedItem.sales.titulo}"  th:href="@{/ithappens/detalhes/{codigo}(codigo=${orderedItem.sales.codigo})}"></a></td>
+		   					<td id="HSOrderedItems" class="text-left" th:text="${orderedItem.orderedItems}"></td>
+		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{orderedItem.users.nome}} |" th:href="@{/ithappens/orderedItems/user/list/{codigo}(codigo=${orderedItem.users.codigo})}"></a></td>
 		   					<td id="HSacao" class="text-center">
-		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/horas/delete/{codigo}(codigo=${horal.codigo})}"
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/orderedItems/delete/{codigo}(codigo=${orderedItem.codigo})}"
 		   								title="Excluir" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-trash"></span>
 		   						</a>		   						  							   						
-		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}" 
+		   						<a class="btn btn-link btn-xs" th:href="@{/ithappens/orderedItems/{codigo}(codigo=${orderedItem.codigo})}" 
 		   								title="Editar" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-pencil"></span>
 		   						</a>

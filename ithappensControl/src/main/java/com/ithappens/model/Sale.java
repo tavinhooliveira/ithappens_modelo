@@ -54,14 +54,14 @@ public class Sale {
 	private Branch branchs;
 
 	@OneToMany(mappedBy = "sales")
-	private List<Hora> horas;
+	private List<OrderedItem> orderedItems;
 
-	public List<Hora> getHoras() {
-		return horas;
+	public List<OrderedItem> getOrderedItems() {
+		return orderedItems;
 	}
 
-	public void setHoras(List<Hora> horas) {
-		this.horas = horas;
+	public void setOrderedItems(List<OrderedItem> orderedItems) {
+		this.orderedItems = orderedItems;
 	}
 
 	@Enumerated(EnumType.STRING)

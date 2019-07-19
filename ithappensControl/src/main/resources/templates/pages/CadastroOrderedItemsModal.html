@@ -3,13 +3,13 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<div class="modal fade" id="addHoras" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="addHoras-modal">
+<div class="modal fade" id="addOrderedItems" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="addOrderedItems-modal">
 	<div class="modal-dialog">
-		<form th:attr="data-url-base=@{/ithappens/horas}" method="POST" th:object="${hora}">
+		<form th:attr="data-url-base=@{/ithappens/orderedItems}" method="POST" th:object="${orderedItem}">
 			
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Cadastro de Horas</h4>
+					<h4 class="modal-title">Cadastro de Pedidoss</h4>
 				</div>
 				<div class="modal-body col-md-12">
 					<p class="alert detalhes">Erro no JS sale</p>
@@ -20,9 +20,9 @@
 					<div class="form-group">					
 						
 						<div class="col-md-4">
-							<label for="dataHora" class="control-label">Data:
-							<span class="text-danger">*</span></label> <input type="text" class="form-control" id="dataHora"
-								name="dataHora" data-provide="datepicker" 
+							<label for="dataOrderedItem" class="control-label">Data:
+							<span class="text-danger">*</span></label> <input type="text" class="form-control" id="dataOrderedItem"
+								name="dataOrderedItem" data-provide="datepicker" 
 								data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
 								data-date-autoclose="true" data-date-today-highlight="true"
 								data-date-orientation="bottom"/>
@@ -30,8 +30,8 @@
 						</div>
 						
 						<div class="col-md-3">
-							<label for="horas" class="control-label">Horas:</label>
-							<input type="text"  class="form-control"  id="horas" placeholder="0,0" name="horas" />
+							<label for="OrderedItems" class="control-label">Pedidoss:</label>
+							<input type="text"  class="form-control"  id="orderedItems" placeholder="0,0" name="orderedItems" />
 						</div>
 						
 						<div class="col-md-5">

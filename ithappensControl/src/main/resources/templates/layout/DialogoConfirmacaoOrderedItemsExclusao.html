@@ -3,9 +3,9 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<div class="modal fade" id="confirmacaoExclusaoHorasModal" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="excluir-horas-modal">
+<div class="modal fade" id="confirmacaoExclusaoOrderedItemsModal" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="excluir-orderedItems-modal">
 	<div class="modal-dialog">
-		<form th:attr="data-url-base=@{/ithappens/horas/delete/}" method="POST" >
+		<form th:attr="data-url-base=@{/ithappens/orderedItems/delete/}" method="POST" >
 		<input type="hidden" name="_method" value="DELETE"/>
 			
 			<div class="modal-content">

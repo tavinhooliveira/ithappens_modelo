@@ -1,34 +1,24 @@
 package com.ithappens.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Hora {
+public class OrderedItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	private String descricao;
+	private String qtdProduct;
 
-	@NotNull(message = "A Hora é obrigatória ")
-	private String horas;
-
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
-	private Date dataHora;
+	private String totalValue;
 
 	@ManyToOne
 	@JoinColumn(name = "cd_sale")
@@ -38,20 +28,19 @@ public class Hora {
 	@JoinColumn(name = "codigo_users")
 	private User users;
 
+	@Enumerated(EnumType.STRING)
+	private Status status;
+
+	public boolean isOpen() {
+		return Status.ATIVO.equals(this.status);
+	}
+
 	public User getUsers() {
 		return users;
 	}
 
 	public void setUsers(User users) {
 		this.users = users;
-	}
-
-	public String getHoras() {
-		return horas;
-	}
-
-	public void setHoras(String horas) {
-		this.horas = horas;
 	}
 
 	public Sale getSales() {
@@ -70,20 +59,28 @@ public class Hora {
 		this.codigo = codigo;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getQtdProduct() {
+		return qtdProduct;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setQtdProduct(String qtdProduct) {
+		this.qtdProduct = qtdProduct;
 	}
 
-	public Date getDataHora() {
-		return dataHora;
+	public String getTotalValue() {
+		return totalValue;
 	}
 
-	public void setDataHora(Date dataHora) {
-		this.dataHora = dataHora;
+	public void setTotalValue(String totalValue) {
+		this.totalValue = totalValue;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override
@@ -102,7 +99,7 @@ public class Hora {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Hora other = (Hora) obj;
+		OrderedItem other = (OrderedItem) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

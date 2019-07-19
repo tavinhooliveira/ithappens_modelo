@@ -16,14 +16,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ithappens.model.Branch;
 import com.ithappens.model.Client;
-import com.ithappens.model.Hora;
+import com.ithappens.model.OrderedItem;
 import com.ithappens.model.Sale;
 import com.ithappens.model.Status;
 import com.ithappens.model.TypeRecipe;
 import com.ithappens.model.User;
 import com.ithappens.repository.Branchs;
 import com.ithappens.repository.Clients;
-import com.ithappens.repository.Horas;
+import com.ithappens.repository.OrderedItems;
 import com.ithappens.repository.Users;
 import com.ithappens.repository.filter.SaleFilter;
 import com.ithappens.service.CadastroSaleService;
@@ -49,7 +49,7 @@ public class SaleController {
 	private Branchs branchs;
 
 	@Autowired
-	private Horas horas;
+	private OrderedItems orderedItems;
 		
 	// Cadastro Novo
 	@RequestMapping("/novo")
@@ -138,8 +138,8 @@ public class SaleController {
 	public ModelAndView exibir(@PathVariable("codigo") Sale sale) {
 		ModelAndView mv = new ModelAndView(DETALHE_SALE_VIEW);
 		mv.addObject(sale);
-		List<Hora> allHoras = horas.findAll();
-		mv.addObject("horas", allHoras);
+		List<OrderedItem> allOrderedItems = orderedItems.findAll();
+		mv.addObject("orderedItems", allOrderedItems);
 		List<User> allUsers = users.findAll();
 		mv.addObject("tdusers", allUsers);
 		return mv;

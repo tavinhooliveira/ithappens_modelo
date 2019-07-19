@@ -10,28 +10,27 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-		
+
 	private String nome;
-	
+
 	private String email;
-	
+
 	@OneToMany(mappedBy = "users")
 	private List<Sale> sales;
-	
+
 	@OneToMany(mappedBy = "users")
-	private List<Hora> horas;
-	
-		
-	public List<Hora> getHoras() {
-		return horas;
+	private List<OrderedItem> orderedItems;
+
+	public List<OrderedItem> getOrderedItems() {
+		return orderedItems;
 	}
 
-	public void setHoras(List<Hora> horas) {
-		this.horas = horas;
+	public void setOrderedItems(List<OrderedItem> orderedItems) {
+		this.orderedItems = orderedItems;
 	}
 
 	public Long getCodigo() {
@@ -90,6 +89,5 @@ public class User {
 			return false;
 		return true;
 	}
-	
 
 }

@@ -28,7 +28,7 @@
 <div class="panel panel-primary" >
 		<div class="panel-heading">
 			<div class="clearfix" id="btn_Nave">
-				<h1 class="panel-title aw-titulo-panel">Horas</h1>				
+				<h1 class="panel-title aw-titulo-panel">Pedidos</h1>				
 				<a class="btn btn-default pull-right" th:href="@{/sales}">
 				<span class="glyphicon glyphicon-search"></span>Listar Vendas</a>
 			</div>
@@ -42,25 +42,25 @@
 		   					<th id="HSListDatal" class="text-left col-md-1">Data<input type="text" class="form-control" id="txtColuna1"/></th>
 		   					<th id="HSListDescricao" class="text-left">Descrição<input type="text" class="form-control" id="txtColuna1"/></th>
 		   					<th id="HSListCdSale" class="text-left ">Sale Relacionada<input type="text" class="form-control" id="txtColuna1"/></th>
-		   					<th id="HSListHoras" class="text-left col-md-1">Horas<input type="text" class="form-control" id="txtColuna1"/></th>
+		   					<th id="HSListOrderedItems" class="text-left col-md-1">Pedidos<input type="text" class="form-control" id="txtColuna1"/></th>
 		   					<th id="HSListResponsavel" class="text-left">Responsável<input type="text" class="form-control" id="txtColuna1"/></th>	   				
 		   					<th id="HSListacao" class="text-center col-md-1">Ação</th>
 		   				</tr>
 		   			</thead>
 		   				   			
 		   			<tbody>
-		   				<tr th:each="horal : ${horas}" th:if="${horal.users.codigo == user.codigo}"> 							   						   					
-		   					<td id="HSListData" class="text-left" th:text="${{horal.dataHora}}"></td>
-		   					<td id="HSListDescricao"><a class="text-left" th:text="${horal.descricao}" th:href="@{/sales/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
-		   					<td id="HSListCdSale"> <span th:text="|Codigo: ${horal.sales.codigo} - |"></span><a class="text-left" th:text="${horal.sales.titulo}"  th:href="@{/sales/detalhes/{codigo}(codigo=${horal.sales.codigo})}"></a></td>
-		   					<td id="HSListHoras" class="text-left" th:text="${horal.horas}"></td>
-		   					<td id="HSListResponsavel" class="text-left " th:text=" | ${{horal.users.nome}} | " ></td>
+		   				<tr th:each="orderedIteml : ${orderedItems}" th:if="${orderedItem.users.codigo == user.codigo}"> 							   						   					
+		   					<td id="HSListData" class="text-left" th:text="${{orderedItem.dataOrderedItem}}"></td>
+		   					<td id="HSListDescricao"><a class="text-left" th:text="${orderedItem.descricao}" th:href="@{/sales/orderedItems/{codigo}(codigo=${orderedItem.codigo})}"></a></td>
+		   					<td id="HSListCdSale"> <span th:text="|Codigo: ${orderedItem.sales.codigo} - |"></span><a class="text-left" th:text="${orderedItem.sales.titulo}"  th:href="@{/sales/detalhes/{codigo}(codigo=${orderedItem.sales.codigo})}"></a></td>
+		   					<td id="HSListOrderedItems" class="text-left" th:text="${orderedItem.orderedItems}"></td>
+		   					<td id="HSListResponsavel" class="text-left " th:text=" | ${{orderedItem.users.nome}} | " ></td>
 		   					<td id="HSListacao" class="text-center">
-		   						<a class="btn btn-link btn-xs" th:href="@{/sales/horas/delete/{codigo}(codigo=${horal.codigo})}"
+		   						<a class="btn btn-link btn-xs" th:href="@{/sales/orderedItems/delete/{codigo}(codigo=${orderedItem.codigo})}"
 		   								title="Excluir" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-trash"></span>
 		   						</a>		   						  							   						
-		   						<a class="btn btn-link btn-xs" th:href="@{/sales/horas/{codigo}(codigo=${horal.codigo})}" 
+		   						<a class="btn btn-link btn-xs" th:href="@{/sales/orderedItems/{codigo}(codigo=${orderedItem.codigo})}" 
 		   								title="Editar" rel="tooltip" data-placement="top">
 		   							<span class="glyphicon glyphicon-pencil"></span>
 		   						</a>
