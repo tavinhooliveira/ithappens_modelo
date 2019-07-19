@@ -24,13 +24,27 @@
 			<div class=""> <input type="hidden" th:field="*{codigo}" /></div>
 			
 				<div class="form-group">			
-					<div class="col-md-4"
+					<div class="col-md-12"
 						th:classappend="${#fields.hasErrors('nome')} ? has-error">
 						<label for="nome" class="control-label">Filial:</label>
 						<input type="text" class="form-control text-uppercase"
 							placeholder="Nome da Filial" id="nome"
 							th:field="*{nome}" />
 					</div>
+					
+					<div class="col-md-6">
+						<label for="cnpj" class="control-label">CNPJ:</label>
+						<input type="text" class="form-control text-uppercase" id="cnpj" name="cnpj" th:field="*{cnpj}"/>
+					</div>
+					<div class="col-md-6">
+						<label for="city" class="control-label">Cidade:</label>
+						<input type="text" class="form-control text-uppercase" id="city" name="city" th:field="*{city}"/>
+					</div>
+					<div class="col-md-12">
+						<label for="address" class="control-label">Endereço:</label>
+						<input type="text" class="form-control text-uppercase" id="address" name="address" th:field="*{address}"/>
+					</div>
+				</div>
 					
 					
 				</div>

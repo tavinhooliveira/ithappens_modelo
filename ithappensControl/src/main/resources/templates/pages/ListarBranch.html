@@ -28,7 +28,10 @@
 		   			<thead>
 		   				<tr>
 		   					<th id="RP_acao" class="text-center col-md-1">Ação</th>
-		   					<th id="RP_responsavel" class="text-left">Branchs</th>	   				
+		   					<th id="RP_responsavel" class="text-left">Filial</th>
+		   					<th id="RP_responsavel" class="text-left">CNPJ</th>
+		   					<th id="RP_responsavel" class="text-left">Cidade</th>
+		   					<th id="RP_responsavel" class="text-left">Endereço</th>	   				
 		   				</tr>
 		   			</thead>
 		   				   			
@@ -45,6 +48,9 @@
 		   						</a>		   						  							   						
 		   					</td>
 		   					<td id="RP_responsavel" class="text-left" th:text="${branch.nome}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${branch.cnpj}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${branch.city}"></td>
+		   					<td id="RP_responsavel" class="text-left" th:text="${branch.address}"></td>
 		   				</tr>
 		   			</tbody>
 		   		</table>

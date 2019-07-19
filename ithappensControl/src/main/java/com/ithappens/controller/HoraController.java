@@ -29,7 +29,7 @@ public class HoraController {
 	@Autowired
 	private Horas horas;
 
-	@Autowired
+	@Autowired 
 	private Users users;
 
 	// Salvar
@@ -77,9 +77,9 @@ public class HoraController {
 	public ModelAndView edicao(@PathVariable("codigo") Hora hora) {
 		ModelAndView mv = new ModelAndView(ALTER_HORAS_VIEW);
 		mv.addObject(hora);
-		List<User> allResponsavel = users.findAll();
+		List<User> allUsers = users.findAll();
 		mv.addObject(new User());
-		mv.addObject("tdresponsaveis", allResponsavel);
+		mv.addObject("tdusers", allUsers);
 		return mv;
 	}
 

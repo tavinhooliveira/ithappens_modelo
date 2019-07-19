@@ -47,14 +47,15 @@
 						<li><a href="#cadastroClientModal" role="button"
 							data-toggle="modal">Cadastrar Cliente</a></li>
 						<li><a href="#cadastroBranchModal" role="button"
-							data-toggle="modal">Cadastrar Módulo</a></li>
+							data-toggle="modal">Cadastrar Filial</a></li>
 						<li><a class="borderLinha"></a></li>
 						<li><a th:href="@{/ithappens/user}"
 							id="ListarUser" role="button" data-toggle="modal">Listar
 								Usuários</a></li>
 						<li><a th:href="@{/ithappens/client}" id="ListarClient"
 							role="button" data-toggle="modal">Listar Clientes</a></li>
-						<li><a class="borderLinha"></a></li>
+						<li><a th:href="@{/ithappens/branch}" id="ListarBranch"
+							role="button" data-toggle="modal">Listar Filial</a></li>
 					</ul>
 					
 					<li sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/ithappens/logout}"><span

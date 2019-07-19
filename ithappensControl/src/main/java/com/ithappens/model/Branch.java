@@ -16,6 +16,10 @@ public class Branch {
 	private Long codigo;
 	
 	private String nome;
+	private String city;
+	private String address;
+	private String cnpj;
+	
 	
 	@OneToMany(mappedBy = "branchs")
 	private List<Task> tasks;
@@ -42,6 +46,30 @@ public class Branch {
 
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
+	}
+	
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 
 	@Override

@@ -35,10 +35,10 @@
 						</div>
 						
 						<div class="col-md-5">
-						<label for="responsaveis" class="control-label">Usuário:</label>
-						<select class="form-control" name="responsaveis" >
-							<option th:each="responsaveis : ${tdresponsaveis}"  
-								th:value="${responsaveis.codigo}" th:text="${responsaveis.nome}">
+						<label for="users" class="control-label">Usuário:</label>
+						<select class="form-control" name="users" >
+							<option th:each="users : ${tdusers}"  
+								th:value="${users.codigo}" th:text="${users.nome}">
 							</option>
 						</select>
 						</div>
