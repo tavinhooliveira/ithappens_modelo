@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ithappens.model.Hora;
 import com.ithappens.model.User;
-import com.ithappens.model.Task;
+import com.ithappens.model.Sale;
 import com.ithappens.repository.Horas;
 import com.ithappens.repository.Users;
 
@@ -34,18 +34,18 @@ public class HoraController {
 
 	// Salvar
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Validated Hora hora, Task task, Errors errors, RedirectAttributes attributes) {
-		attributes.addAttribute(task);
+	public String salvar(@Validated Hora hora, Sale sale, Errors errors, RedirectAttributes attributes) {
+		attributes.addAttribute(sale);
 		if (errors.hasErrors()) {
-			return "redirect:/ithappens/detalhes/" + hora.getTasks().getCodigo();
+			return "redirect:/ithappens/detalhes/" + hora.getSales().getCodigo();
 		}
 		try {
 			horas.save(hora);
 			attributes.addFlashAttribute("mensagem", "Hora adicionada com sucesso!");
-			return "redirect:/ithappens/detalhes/" + hora.getTasks().getCodigo();
+			return "redirect:/ithappens/detalhes/" + hora.getSales().getCodigo();
 		} catch (IllegalArgumentException e) {
 			errors.rejectValue(null, e.getMessage());
-			return "redirect:/ithappens/detalhes/" + hora.getTasks().getCodigo();
+			return "redirect:/ithappens/detalhes/" + hora.getSales().getCodigo();
 		}
 	}
 
@@ -87,7 +87,7 @@ public class HoraController {
 	@RequestMapping(value = "/delete/{codigo}")
 	public String excluir(@PathVariable("codigo") Hora hora) {
 		horas.delete(hora);
-		return "redirect:/ithappens/detalhes/" + hora.getTasks().getCodigo();
+		return "redirect:/ithappens/detalhes/" + hora.getSales().getCodigo();
 	}
 
 }

@@ -3,14 +3,14 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<div class="modal fade" id="tempoTask" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="tempoTask-modal">
+<div class="modal fade" id="tempoSale" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="tempoSale-modal">
 	<div class="modal-dialog">
 		<form th:attr="data-url-base=@{/ithappens}" method="POST" >
 			<input type="hidden" name="_method" value="PUT"/>
 			
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Tempo da Task</h4>
+					<h4 class="modal-title">Tempo da Sale</h4>
 				</div>
 				
 				<div class="modal-body">

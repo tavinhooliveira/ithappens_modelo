@@ -3,10 +3,10 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/LayoutPadrao}"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-	<title>Dashboard</title>
+<title>Dashboard</title>
 </head>
 
 <section layout:fragment="conteudo">
@@ -16,117 +16,129 @@
 			<h3 class="color:red">Dashboard</h3>
 		</div>
 	</div>
-	
+
 
 	<div class="container-fluid" id="DashboardBtnPrincipal">
 		<div class="row">
-			
+
 			<div class="col-md-3" id="DashboardVendas">
 				<a th:href="@{/ithappens}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/vendas.png}" width="60px;"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					<span class="pull-right text-info">Total:<b th:text="${{taskContTotal}}"></b></span>
+					<div class="aw-box">
+						<div class="Dicon">
+							<img th:src="@{/layout/images/dashb/vendas.png}" width="60px;" />
+							<i class="fa  fa-heartbeat  fa-3x"></i> <span
+								class="pull-right text-info">Total:<b
+								th:text="${{saleContTotal}}"></b></span>
+						</div>
+						<div class="aw-box__value">Vendas</div>
+						<small><span class="text-success">Ativo:</span><b
+							th:text="${{saleContAtivo}}"></b> | <span class="text-warning">Cancelado:</span><b
+							th:text="${{saleContCancelado}}"></b> | <span class="text-info">Processando:</span><b
+							th:text="${{saleContProcessando}}"></b></small>
 					</div>
-					<div class="aw-box__value">Vendas</div>
-					<small><span class="text-success">Ativo:</span><b th:text="${{taskContOpen}}"></b>  |  <span class="text-warning" >Cancelado:</span><b th:text="${{taskContOnHold}}">05</b>  |  <span class="text-info">Processando:</span><b th:text="${{taskContClosed}}">20</b></small>
-				</div>
 				</a>
 			</div>
-			
+
 			<div class="col-md-3" id="DashboardPessoas">
 				<a th:href="@{/ithappens/user}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/persona.png}" width="60px;"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					<span class="pull-right text-info"><b></b></span>
+					<div class="aw-box">
+						<div class="Dicon">
+							<img th:src="@{/layout/images/dashb/persona.png}" width="60px;" />
+							<i class="fa  fa-heartbeat  fa-3x"></i> <span
+								class="pull-right text-info"><b></b></span>
+						</div>
+						<div class="aw-box__value">Usuários</div>
+						<small>Total = <b th:text="${{ContUser}}"></b></small>
 					</div>
-					<div class="aw-box__value">Usuários</div>
-					<small>Total = <b th:text="${{ContUser}}"></b></small>
-				</div>
 				</a>
 			</div>
-			
+
 			<div class="col-md-3" id="DashboardCliente">
 				<a th:href="@{/ithappens/client}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/clientes.png}" width="60px;"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					<span class="pull-right text-info"><b></b></span>
+					<div class="aw-box">
+						<div class="Dicon">
+							<img th:src="@{/layout/images/dashb/clientes.png}" width="60px;" />
+							<i class="fa  fa-heartbeat  fa-3x"></i> <span
+								class="pull-right text-info"><b></b></span>
+						</div>
+						<div class="aw-box__value">Clientes</div>
+						<small>Total = <b th:text="${{ContClients}}"></b></small>
 					</div>
-					<div class="aw-box__value">Clientes</div>
-					<small>Total = <b th:text="${{ContClients}}"></b></small>
-				</div>
 				</a>
 			</div>
-			
-			<div class="col-md-3" id="DashboardTask">
+
+			<div class="col-md-3" id="DashboardSale">
 				<a th:href="@{/ithappens/branch}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/filiais.png}" width="60px;"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					<span class="pull-right text-info"><b></b></span>
+					<div class="aw-box">
+						<div class="Dicon">
+							<img th:src="@{/layout/images/dashb/filiais.png}" width="60px;" />
+							<i class="fa  fa-heartbeat  fa-3x"></i> <span
+								class="pull-right text-info"><b></b></span>
+						</div>
+						<div class="aw-box__value">Filiais</div>
+						<small>Total = <b th:text="${{ContBranchs}}"></b></small>
 					</div>
-					<div class="aw-box__value">Filiais</div>
-					<small>Total = <b th:text="${{ContBranchs}}"></b></small>
-				</div>
 				</a>
 			</div>
-			
-			<div class="col-md-3" id="DashboardTask">
+
+			<div class="col-md-3" id="DashboardSale">
 				<a th:href="@{/ithappens}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/produtos.png}" width="60px;"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					<span class="pull-right text-info"><b></b></span>
+					<div class="aw-box">
+						<div class="Dicon">
+							<img th:src="@{/layout/images/dashb/produtos.png}" width="60px;" />
+							<i class="fa  fa-heartbeat  fa-3x"></i> <span
+								class="pull-right text-info"><b></b></span>
+						</div>
+						<div class="aw-box__value">Produtos</div>
+						<small>Total = <b th:text="${{modulosAll}}"></b></small>
 					</div>
-					<div class="aw-box__value">Produtos</div>
-					<small>Total = <b th:text="${{modulosAll}}"></b></small>
-				</div>
-				</a>
-			</div>			
-					
-			<div class="col-md-3" id="DashboardTask">
-				<a th:href="@{/ithappens}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/estoque.png}" width="60px;"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					<span class="pull-right text-info"><b></b></span>
-					</div>
-					<div class="aw-box__value">Estoque</div>
-					<small>Total = <b th:text="${{modulosAll}}"></b></small>
-				</div>
 				</a>
 			</div>
-			
-						<div class="col-md-3" id="DashboardTask">
+
+			<div class="col-md-3" id="DashboardSale">
 				<a th:href="@{/ithappens}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/pagamentos.png}" width="60px;"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					<span class="pull-right text-info"><b></b></span>
+					<div class="aw-box">
+						<div class="Dicon">
+							<img th:src="@{/layout/images/dashb/estoque.png}" width="60px;" />
+							<i class="fa  fa-heartbeat  fa-3x"></i> <span
+								class="pull-right text-info"><b></b></span>
+						</div>
+						<div class="aw-box__value">Estoque</div>
+						<small>Total = <b th:text="${{modulosAll}}"></b></small>
 					</div>
-					<div class="aw-box__value">Pagamentos</div>
-					<small>Formas de pagamentos</small>
-				</div>
 				</a>
 			</div>
-			
-			<div class="col-md-3" id="DashboardTask">
+
+			<div class="col-md-3" id="DashboardSale">
 				<a th:href="@{/ithappens}">
-				<div class="aw-box">
-					<div class="Dicon"> <img th:src="@{/layout/images/dashb/querys.png}" width="60px;"/>
-						<i class="fa  fa-heartbeat  fa-3x"></i>
-					<span class="pull-right text-info"><b></b></span>
+					<div class="aw-box">
+						<div class="Dicon">
+							<img th:src="@{/layout/images/dashb/pagamentos.png}"
+								width="60px;" /> <i class="fa  fa-heartbeat  fa-3x"></i> <span
+								class="pull-right text-info"><b></b></span>
+						</div>
+						<div class="aw-box__value">Pagamentos</div>
+						<small>Formas de pagamentos</small>
 					</div>
-					<div class="aw-box__value">Consultas</div>
-					<small>Consultas Query SQL</small>
-				</div>
 				</a>
 			</div>
-			
-					
-			
+
+			<div class="col-md-3" id="DashboardSale">
+				<a th:href="@{/ithappens}">
+					<div class="aw-box">
+						<div class="Dicon">
+							<img th:src="@{/layout/images/dashb/querys.png}" width="60px;" />
+							<i class="fa  fa-heartbeat  fa-3x"></i> <span
+								class="pull-right text-info"><b></b></span>
+						</div>
+						<div class="aw-box__value">Consultas</div>
+						<small>Consultas Query SQL</small>
+					</div>
+				</a>
+			</div>
+
+
+
 		</div>
 	</div>
 </section>

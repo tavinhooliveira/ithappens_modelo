@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.ithappens.model.Task;
-import com.ithappens.repository.Tasks;
-import com.ithappens.repository.filter.TaskFilter;
+import com.ithappens.model.Sale;
+import com.ithappens.repository.Sales;
+import com.ithappens.repository.filter.SaleFilter;
 
 @Service
-public class CadastroTaskService {
+public class CadastroSaleService {
 	
 	@Autowired
-	private Tasks tasks;
+	private Sales sales;
 
 
 	//Metodo Salvar
-	public void salvar(Task task) {
+	public void salvar(Sale sale) {
 		try {
-			tasks.save(task);
+			sales.save(sale);
 		} catch (DataIntegrityViolationException e) {
 			throw new IllegalArgumentException("Formato de data inválido");
 		}
@@ -29,14 +29,14 @@ public class CadastroTaskService {
 		
 	
 	//Metodo Listar
-	public List<Task>filtrar(TaskFilter filtro) {
+	public List<Sale>filtrar(SaleFilter filtro) {
 		String descricao = filtro.getDescricao() == null ? "%" : filtro.getDescricao();
-		return tasks.findByDescricaoContaining(descricao);
+		return sales.findByDescricaoContaining(descricao);
 	}
 	
 	//Metodo Excluir
 	public void excluir(Long codigo){
-		tasks.delete(codigo);		
+		sales.delete(codigo);		
 	}
 	
 	

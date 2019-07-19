@@ -56,7 +56,7 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 	form.attr('action', action + codigo);
 		
 	modal.find('.modal-body span').html('Tem certeza que deseja excluir:<strong>'+tipo+'</strong> - <strong>' + titulo + '</strong>?'+
-			'</br> <p class="text-danger">OBS.: Só será possivel excluir a Task: <b>'+codigo+'</b> se não tiver horas lançadas!</p>');
+			'</br> <p class="text-danger">OBS.: Só será possivel excluir a Venda: <b>'+codigo+'</b> se não tiver pedidos lançadas!</p>');
 });
 
 
@@ -84,7 +84,7 @@ $('#confirmacaoExclusaoHorasModal').on('show.bs.modal', function(event) {
 $('#addHoras').on('show.bs.modal', function(event) {
 	var button = $(event.relatedTarget);
 	
-	var codigoTask = button.data('codigo');
+	var codigoSale = button.data('codigo');
 	var tipo = button.data('tipo');
 	var titulo = button.data('titulo');
 	
@@ -94,10 +94,10 @@ $('#addHoras').on('show.bs.modal', function(event) {
 
 	form.attr('action', action);
 	
-	document.querySelector("[name='tasks']").value = codigoTask;
+	document.querySelector("[name='sales']").value = codigoSale;
 
 		
-	modal.find('.modal-body p').html('Task:<strong> '+codigoTask+' - '+tipo+'</strong> - ' + titulo);
+	modal.find('.modal-body p').html('Sale:<strong> '+codigoSale+' - '+tipo+'</strong> - ' + titulo);
 
 });
 

@@ -1,6 +1,6 @@
 package com.ithappens.repository.filter;
 
-public class TaskFilter {
+public class SaleFilter {
 
 	private String descricao;
 

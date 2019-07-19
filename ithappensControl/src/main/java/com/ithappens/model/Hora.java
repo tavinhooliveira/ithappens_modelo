@@ -16,31 +16,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Hora {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	private String descricao;
-	
+
 	@NotNull(message = "A Hora é obrigatória ")
 	private String horas;
-	
-	
+
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataHora;
-		
-	
+
 	@ManyToOne
-	@JoinColumn(name = "cd_task")
-	private Task tasks;
-	
-	
+	@JoinColumn(name = "cd_sale")
+	private Sale sales;
+
 	@ManyToOne
 	@JoinColumn(name = "codigo_users")
 	private User users;
-	
 
 	public User getUsers() {
 		return users;
@@ -58,12 +54,12 @@ public class Hora {
 		this.horas = horas;
 	}
 
-	public Task getTasks() {
-		return tasks;
+	public Sale getSales() {
+		return sales;
 	}
 
-	public void setTasks(Task tasks) {
-		this.tasks = tasks;
+	public void setSales(Sale sales) {
+		this.sales = sales;
 	}
 
 	public Long getCodigo() {
@@ -82,7 +78,6 @@ public class Hora {
 		this.descricao = descricao;
 	}
 
-
 	public Date getDataHora() {
 		return dataHora;
 	}
@@ -90,8 +85,6 @@ public class Hora {
 	public void setDataHora(Date dataHora) {
 		this.dataHora = dataHora;
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -117,9 +110,5 @@ public class Hora {
 			return false;
 		return true;
 	}
-	
-	
-		
-	
 
 }

@@ -6,7 +6,7 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> 
 
 <head>
-<title>Listar Task</title>
+<title>Listar Vendas</title>
 <!--script impressão-->
 <script>
 function cont(){
@@ -29,12 +29,12 @@ tela_impressao.window.close();
 		<div class="panel-heading">
 			<div class="clearfix">
 				<h1 class="panel-title aw-titulo-panel">Detalhes</h1>
-				<a class="btn btn-default pull-right" th:href="@{/ithappens}" title="Listar todas as Task"  rel="tooltip" data-placement="bottom">
+				<a class="btn btn-default pull-right" th:href="@{/ithappens}" title="Listar todas as Sale"  rel="tooltip" data-placement="bottom">
 				<span class="glyphicon glyphicon-search"></span>Listar</a>		
-				<!--NovaTask-->
+				<!--NovaSale-->
 				<a class="btn btn-success pull-right" id="tbn-nav-new" th:href="@{/ithappens/novo}" sec:authorize="hasRole('ROLE_ADMIN')" 
-					title="Nova Task"  rel="tooltip" data-placement="bottom">
-					<span class="glyphicon glyphicon-plus-sign"></span>Nova Task
+					title="Nova Sale"  rel="tooltip" data-placement="bottom">
+					<span class="glyphicon glyphicon-plus-sign"></span>Nova Sale
 				</a>
 			</div>	
 		</div>
@@ -42,7 +42,6 @@ tela_impressao.window.close();
 		<div class="panel-body" id="print">
 		
 		<div class="col-md-12 alert detalhes">
-			<label>Titulo: </label><strong><span class="text-primary" th:text="${task.titulo}"></span></strong>
 		<div class=" pull-right">
 			<!--Imprimir-->
 			<a class="btn btn-default">
@@ -53,94 +52,65 @@ tela_impressao.window.close();
 		
 		<div class="col-md-3 alert detalhes ">
 			<div class="col-ms-1">
-			<label>Código: </label><span class="text-primary" th:text="${task.codigo}"></span>
+			<label>Código: </label><span class="text-primary" th:text="${sale.codigo}"></span>
 			</div>
 			
 			<div class="col-ms-1">
-			<label>Tipo: </label><span class="text-primary" th:text="${task.tipo}"></span>
+			<label>Tipo: </label><span class="text-primary" th:text="${sale.tipo}"></span>
+			</div>
+				<div class="col-ms-1">
+			<label>Status: </label><strong><span class="text-primary" th:text="${sale.status.descricao}" th:classappend="${sale.open ? 'text-success' : 'text'}"></span></strong>
 			</div>
 			
 			<div class="col-ms-1">
-			<label>Código Cliente: </label><span class="text-primary" th:text="${task.cd_cliente}"></span>
+			<label>Data: </label><span class="text-primary" th:text="${{sale.dataOrder}}"></span>
 			</div>
-						
-			<div class="col-ms-1">
-			<label>Task Relacionada: </label><span class="text-primary" th:text="${task.dcr_relacionada}"></span>
-			</div>
+			
 
+			
+			
+		</div>
+		
+		<div class="col-md-8 col-sm-offset-1 alert detalhes">
+		
+			
 			<div class="col-ms-1">
-				<label>Usuário: </label><span class="text-primary"><a th:text="${{task.users.nome}}" th:href="@{/ithappens/horas/user/list/{codigo}(codigo=${task.users.codigo})}">
+				<label>Usuário: </label><span class="text-primary"><a th:text="${{sale.users.nome}}" th:href="@{/ithappens/horas/user/list/{codigo}(codigo=${sale.users.codigo})}">
 				</a></span> 
 			</div>
 			
 			
 			<div class="col-ms-1">
-				<label>Cliente: </label><span class="text-primary" th:text="${{task.clients.nome}}"></span>
+				<label>Cliente: </label><span class="text-primary" th:text="${{sale.clients.nome}}"></span>
 			</div>	
+			<div class="col-ms-1">
+				<label>Filial:</label><span class="text-primary" th:text="${{sale.branchs.nome}}"></span>
+			</div>
 			
+			<div class="col-ms-1">
+			<label>Descrição Detalhada: </label><br>
+			<label class="text-primary" th:text="${sale.descricao}"></label>
 		</div>
-		
-		<div class="col-md-3 col-sm-offset-1 alert detalhes">
-			<div class="col-ms-1">
-			<label>Status: </label><strong><span class="text-primary" th:text="${task.status.descricao}" th:classappend="${task.open ? 'text-success' : 'text'}"></span></strong>
-			</div>
-			<div class="col-ms-1">
-				<label>Filial:</label><span class="text-primary" th:text="${{task.branchs.nome}}"></span>
-			</div>
-		
-			<div class="col-ms-1">
-			<label>Data Inicial: </label><span class="text-primary" th:text="${{task.dataInicial}}"></span>
-			</div>
-			
-			<div class="col-ms-1">
-			<label>Data Prevista: </label><span class="text-primary" th:text="${{task.dataPrevista}}"></span>
-			</div>
-			
-			<div class="col-ms-1">
-			<label>Data Final: </label><span class="text-primary" th:text="${{task.dataConclusao}}"></span>
-				<!--Horas Modal-->
-				<a th:if="${not #lists.isEmpty(task.dataConclusao)}" class="btn pull-right" data-toggle="modal" data-target="#tempoTask" 
-					th:attr="data-codigo=${task.codigo}, data-dataInicial=${{task.dataInicial}}, data-dataConclusao=${{task.dataConclusao}}"
-					title="Total de Dias da Task"  rel="tooltip" data-placement="bottom" >
-					<span class="glyphicon glyphicon-dashboard"></span>
-				</a>			
-			</div>
-			
-			<div class="col-ms-1">
-				<label>Link Externo: </label>
-				<a th:if="${not #lists.isEmpty(task.link)}" class="btn btn-link btn-xs" th:href="${task.link}"							
-					th:text="http_link..." target="_blak">
-				</a>							
-			</div>
-			
-			<div class="col-ms-1">
-				<label>Link  SVN: </label>
-				<a th:if="${not #lists.isEmpty(task.linksvn)}" class="btn btn-link btn-xs" th:href="${task.linksvn}"							
-					th:text="http_link..." target="_blak">
-				</a>							
-			</div>				
+					
 			
 		</div>
 				
 		
-		<div class="aw-graph-box col-md-4 col-sm-offset-1 detalhes">
-			<label class=" aw-graph-box__header">Descrição Detalhada: </label><br>
-			<textarea rows="6" class="form-control" th:text="${task.descricao}"></textarea>
-		</div>
+		
 		
 						
 		<div id=" btns_detalhe aw-graph-box" class="col-md-12 pull-left" >	
 						
 			<!--Editar-->
 			<a class="btn btn-info" sec:authorize="hasRole('ROLE_ADMIN')"
-				th:href="@{/ithappens/{codigo}(codigo=${task.codigo})}"
+				th:href="@{/ithappens/{codigo}(codigo=${sale.codigo})}"
 				title="Editar"  rel="tooltip" data-placement="bottom">
 				<span class="glyphicon glyphicon-pencil">Editar</span>
 			</a>		
 			<!--Excluir-->
 			<a class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')"
 				data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-				th:attr="data-codigo=${task.codigo},data-tipo=${task.tipo}, data-titulo=${task.titulo}"
+				th:attr="data-codigo=${sale.codigo},data-tipo=${sale.tipo}, data-titulo=${sale.titulo}"
 				title="Excluir"  rel="tooltip" data-placement="bottom"> <span
 					class="glyphicon glyphicon-trash"></span>Excluir
 			</a>
@@ -164,8 +134,8 @@ tela_impressao.window.close();
 		        <div class="panel">
 		        	<!--Horas-->			
 					<a class="btn btn-success" data-toggle="modal" data-target="#addHoras" sec:authorize="hasRole('ROLE_USER')" 
-						th:attr="data-codigo=${task.codigo}, data-tipo=${task.tipo}, data-titulo=${task.titulo}"
-						title="Lançar Horas nessa Task"  rel="tooltip" data-placement="bottom">
+						th:attr="data-codigo=${sale.codigo}, data-tipo=${sale.tipo}, data-titulo=${sale.titulo}"
+						title="Lançar Horas nessa sale"  rel="tooltip" data-placement="bottom">
 						<span class="glyphicon glyphicon-time"></span>Add Horas
 					</a>
 		        
@@ -186,7 +156,7 @@ tela_impressao.window.close();
 		   			</thead>
 		   				   			
 		   			<tbody>
-		   				<tr th:each="horal : ${horas}" th:if="${task.codigo == horal.tasks.codigo}"> 
+		   				<tr th:each="horal : ${horas}" th:if="${sale.codigo == horal.sales.codigo}"> 
 		   											   						   					
 		   					
 		   					<td id="HSData">  <a class="text-right " th:text=" ${{horal.dataHora}} " th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a> </td>
@@ -203,7 +173,7 @@ tela_impressao.window.close();
 		   				</tr>
 		   				<tr>
 		   				
-	   					<td colspan="6" th:if="${#lists.isEmpty(horas)}">Nehuma hora cadastrada para essa Task!</td>
+	   					<td colspan="6" th:if="${#lists.isEmpty(horas)}">Nehuma hora cadastrada para essa Sale!</td>
 	   					</tr>
 	   					
 		   			</tbody>
@@ -224,8 +194,8 @@ tela_impressao.window.close();
 							  <button type="submit" class="btn btn-success col-md-1">Enviar</button>
 							  <span class="alert" >
 							  
-<!-- 							  <input name='task' th:value="${task.codigo}" id="task" readonly style="display: none;" /> -->
-<!-- 								<input name='task.codigo' th:value="${task.codigo}" id="task" /> -->
+<!-- 							  <input name='sale' th:value="${sale.codigo}" id="sale" readonly style="display: none;" /> -->
+<!-- 								<input name='sale.codigo' th:value="${sale.codigo}" id="sale" /> -->
 							  <input class="col-md-4" name="arquivo" type="file" th:value="${arquivo}" />
 <!-- 							  <input name='dataHora' th:value="${dataHora}" id="dataHora"/> -->
 								<label>Date</label>
@@ -251,7 +221,7 @@ tela_impressao.window.close();
 		   					<th id="AXCodigo" class="text-left ">Código</th>
 		   					<th id="AXData" class="text-left">Data</th>
 		   					<th id="AXAnexo" class="text-left">Anexo</th>
-		   					<th id="AXCD_Task" class="text-left">Task</th>   				
+		   					<th id="AXCD_Sale" class="text-left">Sale</th>   				
 		   					<th id="AXAcao" class="text-center col-md-1 glyphicon glyphicon-trash"></th>
 		   				</tr>
 		   			</thead>
@@ -261,7 +231,7 @@ tela_impressao.window.close();
 		   					<td id="AXCodigo"class="text-left" th:text="${anexos.codigo}" ></td>
 		   					<td id="AXData"class="text-left" th:text="${anexos.dataHora}" ></td>
 		   					<td id="AXAnexo"class="text-left" th:text="${anexos.arquivo}" ></td>
-		   					<td id="AXCD_Task" class="text-left" th:text="${anexos.codigo}" ></td>
+		   					<td id="AXCD_Sale" class="text-left" th:text="${anexos.codigo}" ></td>
 		   				</tr>
 		   				<tr>
 		   				
@@ -295,7 +265,7 @@ tela_impressao.window.close();
        
 	      
 		<div th:replace="pages/CadastroHorasModal :: addHoras-modal"></div>
-		<div th:replace="layout/TempoTaskModal :: tempoTask-modal"></div>
+		<div th:replace="layout/TempoSaleModal :: tempoSale-modal"></div>
 		<div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
 		<div th:replace="layout/DialogoConfirmacaoHorasExclusao :: excluir-horas-modal"></div>
 	</div>

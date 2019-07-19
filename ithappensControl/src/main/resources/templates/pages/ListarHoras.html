@@ -35,7 +35,7 @@
 		   				<tr th:each="horal : ${horas}"> 							   						   					
 		   					<td id="HSData" class="text-left" th:text="${{horal.dataHora}}"></td>
 		   					<td id="HSDescricao"><a class="text-left" th:text="${horal.descricao}" th:href="@{/ithappens/horas/{codigo}(codigo=${horal.codigo})}"></a></td>
-		   					<td id="HSCdTask"> <span th:text="|ID: ${horal.tasks.codigo} - |"></span><a class="text-left" th:text="${horal.tasks.titulo}"  th:href="@{/ithappens/detalhes/{codigo}(codigo=${horal.tasks.codigo})}"></a></td>
+		   					<td id="HSCdTask"> <span th:text="|ID: ${horal.sales.codigo} - |"></span><a class="text-left" th:text="${horal.sales.titulo}"  th:href="@{/ithappens/detalhes/{codigo}(codigo=${horal.sales.codigo})}"></a></td>
 		   					<td id="HSHoras" class="text-left" th:text="${horal.horas}"></td>
 		   					<td id="HSResponsavel"> <a class="text-left" th:text=" | ${{horal.users.nome}} |" th:href="@{/ithappens/horas/user/list/{codigo}(codigo=${horal.users.codigo})}"></a></td>
 		   					<td id="HSacao" class="text-center">

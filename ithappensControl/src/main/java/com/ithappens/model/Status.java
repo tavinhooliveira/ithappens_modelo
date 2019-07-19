@@ -1,15 +1,14 @@
 package com.ithappens.model;
 
-public enum StatusTask {
+public enum Status {
 	
-	OPEN("Open"),
-	ON_HOLD("On_Hold"),
-	REJECTED("Rejected"),
-	CLOSED("Closed");
+	ATIVO("ativo"),
+	CANCELADO("cancelelado"),
+	PROCESSADO("processado");
 	
 	private String descricao;
 	
-	StatusTask (String descricao) {
+	Status (String descricao) {
 		this.descricao = descricao;
 	}
 	

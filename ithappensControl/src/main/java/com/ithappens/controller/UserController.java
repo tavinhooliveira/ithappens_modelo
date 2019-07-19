@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ithappens.model.User;
-import com.ithappens.model.Task;
+import com.ithappens.model.Sale;
 import com.ithappens.repository.Users;
 
 @Controller
@@ -46,9 +46,9 @@ public class UserController {
 
 	// Salvar Usuário
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Validated User user, Task task, Errors errors,
+	public String salvar(@Validated User user, Sale sale, Errors errors,
 			RedirectAttributes attributes) {
-		attributes.addAttribute(task);
+		attributes.addAttribute(sale);
 		if (errors.hasErrors()) {
 			return CADASTRO_USER_VIEW;
 		}

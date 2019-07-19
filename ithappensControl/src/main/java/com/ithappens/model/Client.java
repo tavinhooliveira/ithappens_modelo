@@ -20,7 +20,7 @@ public class Client {
 	private String email;
 	
 	@OneToMany(mappedBy = "clients")
-	private List<Task> tasks;
+	private List<Sale> sales;
 
 
 	public Long getCodigo() {
@@ -53,14 +53,15 @@ public class Client {
 	}
 
 
-	public List<Task> getTasks() {
-		return tasks;
+	public List<Sale> getSales() {
+		return sales;
 	}
 
 
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
 	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

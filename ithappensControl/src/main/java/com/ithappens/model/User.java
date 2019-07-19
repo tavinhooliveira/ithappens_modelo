@@ -20,7 +20,7 @@ public class User {
 	private String email;
 	
 	@OneToMany(mappedBy = "users")
-	private List<Task> tasks;
+	private List<Sale> sales;
 	
 	@OneToMany(mappedBy = "users")
 	private List<Hora> horas;
@@ -57,13 +57,13 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public List<Task> getTasks() {
-		return tasks;
+
+	public List<Sale> getSales() {
+		return sales;
 	}
 
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
 	}
 
 	@Override

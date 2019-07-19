@@ -6,7 +6,7 @@
 	layout:decorate="~{layout/LayoutPadrao}">
 
 <head>
-<title>Listar Task</title>
+<title>Listar Vendas</title>
 </head>
 
 <section layout:fragment="conteudo">
@@ -17,7 +17,7 @@
 			<div class="clearfix">
 				<h1 class="panel-title aw-titulo-panel">Pesquisar</h1>
 				<a class="btn btn-success pull-right" th:href="@{/ithappens/novo}" sec:authorize="hasRole('ROLE_ADMIN')"><span
-					class="glyphicon glyphicon-plus-sign"></span>Nova Task</a>
+					class="glyphicon glyphicon-plus-sign"></span>Novo Pedido de Venda</a>
 			</div>
 		</div>
 
@@ -28,54 +28,44 @@
 					<thead>
 						<tr>
 							<th id="tbid" class="text-left">Codigo</th>
-							<th id="tbtitulo" class="text-left ">Titulo</th>
+							<th id="tbid" class="text-left ">Descricao</th>
 							<th id="tbtipo" class="text-left">Tipo</th>
 							<th id="tbstatus" class="text-left">Status</th>
-							<th id="tbcliente" class="text-left">CD. Cliente</th>
-							<th id="tbdcr" class="text-left">Task Relacionada</th>
-							<th id="tbdtaInicial" class="text-center col-md-1">Data Inicial</th>
+													
+							<th id="tbdtaInicial" class="text-center col-md-1">Data</th>
 							<th id="tbacao" class="text-center col-md-1" sec:authorize="hasRole('ROLE_ADMIN')">Ação</th>
 							<!--Campos Ocultos na Grid, mas excencial para a pesquisa-->
-							<th id="tbdescricao" class="text-center col-md-1">Descricao</th>
-							<th id="tbdtaPrevista" class="text-center col-md-1">Data Prevista</th>
-							<th id="tbdtaFinal" class="text-center col-md-1">Data Final</th>
-
 
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="task : ${tasks}">
-							<td id="tbid" class="text-center" th:text="${task.codigo}"></td>
+						<tr th:each="sale : ${sales}">
+							<td id="tbid" class="text-center" th:text="${sale.codigo}"></td>
 							
 							<td id="tbtitulo">								
 								<a class="text-link"
-									th:href="@{/ithappens/detalhes/{codigo}(codigo=${task.codigo})}">									
-									<span th:text="${task.titulo}"></span>
+									th:href="@{/ithappens/detalhes/{codigo}(codigo=${sale.codigo})}">									
+									<span th:text="${sale.descricao}"></span>
 								</a>										
 							</td>
 							
 							<!--Restante da Lista-->														
-							<td id="tbtipo" class="text-left" th:text="${task.tipo}"></td>							
-							<td id="tbstatus"><span class="text-center" th:text="${task.status.descricao}" th:classappend="${task.open ? 'text-success lead' : 'text'}"></span></td>							
-							<td id="tbcliente" class="text-left text-uppercase" th:text="${task.cd_cliente}"></td>
-							<td id="tbdcr" class="text-left text-uppercase" th:text="${task.dcr_relacionada}"></td>
-							<td id="tbdtaInicial" class="text-center" th:text="${{task.dataInicial}}"></td>
-							<!--Campos Ocultos na Grid, mas excencial para a pesquisa-->
-							<td id="tbdescricao" class="text-center" th:text="${task.descricao}"></td>
-							<td id="tbdtaPrevista" class="text-center" th:text="${{task.dataPrevista}}"></td>
-							<td id="tbdtaFinal" class="text-center" th:text="${{task.dataConclusao}}"></td>	
+							<td id="tbtipo" class="text-left" th:text="${sale.tipo}"></td>							
+							<td id="tbstatus"><span class="text-center" th:text="${sale.status.descricao}" th:classappend="${sale.open ? 'text-success lead' : 'text'}"></span></td>							
+							<td id="tbdtaInicial" class="text-center" th:text="${{sale.dataOrder}}"></td>
+							<!--Campos Ocultos na Grid, mas excencial para a pesquisa-->	
 							<!--Menu Ação-->
 							<td id="tbacao" class="text-center" sec:authorize="hasRole('ROLE_ADMIN')">
 								<!--Excluir-->
 								<a class="btn btn-link btn-xs"
 									data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-									th:attr="data-codigo=${task.codigo},data-tipo=${task.tipo}, data-titulo=${task.titulo}"
+									th:attr="data-codigo=${sale.codigo},data-tipo=${sale.tipo}, data-descricao=${sale.descricao}"
 									title="Excluir" rel="tooltip" data-placement="top"> <span
 										class="glyphicon glyphicon-trash"></span>
 								</a>
 								<!--Editar-->
 								<a class="btn btn-link btn-xs"
-									th:href="@{/ithappens/{codigo}(codigo=${task.codigo})}"
+									th:href="@{/ithappens/{codigo}(codigo=${sale.codigo})}"
 									title="Editar" rel="tooltip" data-placement="top">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>																

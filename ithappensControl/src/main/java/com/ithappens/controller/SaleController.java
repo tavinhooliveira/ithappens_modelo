@@ -14,32 +14,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ithappens.model.Anexo;
-import com.ithappens.model.Hora;
-import com.ithappens.model.Client;
 import com.ithappens.model.Branch;
+import com.ithappens.model.Client;
+import com.ithappens.model.Hora;
+import com.ithappens.model.Sale;
+import com.ithappens.model.Status;
+import com.ithappens.model.TypeRecipe;
 import com.ithappens.model.User;
-import com.ithappens.model.StatusTask;
-import com.ithappens.model.Task;
-import com.ithappens.model.TipoTask;
-import com.ithappens.repository.Anexos;
-import com.ithappens.repository.Horas;
-import com.ithappens.repository.Clients;
 import com.ithappens.repository.Branchs;
+import com.ithappens.repository.Clients;
+import com.ithappens.repository.Horas;
 import com.ithappens.repository.Users;
-import com.ithappens.repository.filter.TaskFilter;
-import com.ithappens.service.CadastroTaskService;
+import com.ithappens.repository.filter.SaleFilter;
+import com.ithappens.service.CadastroSaleService;
 
 @Controller
 @RequestMapping("/ithappens")
-public class TaskController {
+public class SaleController {
 
-	private static final String CADASTRO_VIEW = "/pages/CadastroTask";
-	private static final String LIST_TASK_VIEW = "/pages/ListarTask";
-	private static final String DETALHE_TASK_VIEW = "/pages/DetalheTask";
+	private static final String CADASTRO_VIEW = "/pages/CadastroSale";
+	private static final String LIST_SALE_VIEW = "/pages/ListarSale";
+	private static final String DETALHE_SALE_VIEW = "/pages/DetalheSale";
 
 	@Autowired
-	private CadastroTaskService cadastrotaskservice;
+	private CadastroSaleService cadastroSaleservice;
 
 	@Autowired
 	private Users users;
@@ -52,18 +50,14 @@ public class TaskController {
 
 	@Autowired
 	private Horas horas;
-	
-	@Autowired
-	private Anexos anexos;
-
-	
+		
 	// Cadastro Novo
 	@RequestMapping("/novo")
-	public ModelAndView novo(@ModelAttribute("filtro") TaskFilter filtro) {
+	public ModelAndView novo(@ModelAttribute("filtro") SaleFilter filtro) {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
-		List<Task> allTask = cadastrotaskservice.filtrar(filtro);
-		mv.addObject("tasks", allTask);
-		mv.addObject(new Task());
+		List<Sale> allSale = cadastroSaleservice.filtrar(filtro);
+		mv.addObject("sales", allSale);
+		mv.addObject(new Sale());
 		return mv;
 	}
 	
@@ -89,47 +83,47 @@ public class TaskController {
 		
 	// Salvar
 	@RequestMapping(method = RequestMethod.POST)
-	public String salvar(@Validated Task task, Errors errors, RedirectAttributes attributes) {
+	public String salvar(@Validated Sale sale, Errors errors, RedirectAttributes attributes) {
 		if (errors.hasErrors()) {
 			return CADASTRO_VIEW;
 
 		}
 		try {
-			cadastrotaskservice.salvar(task);
-			attributes.addFlashAttribute("mensagem", "Task salva com sucesso!");
-			return "redirect:/ithappens/detalhes/" + task.getCodigo().toString();
+			cadastroSaleservice.salvar(sale);
+			attributes.addFlashAttribute("mensagem", "Pedido salvo com sucesso!");
+			return "redirect:/ithappens/detalhes/" + sale.getCodigo().toString();
 		} catch (IllegalArgumentException e) {
 			errors.rejectValue("dataVencimento", null, e.getMessage());
 			return CADASTRO_VIEW;
 		}
 	}
 	
-	// Listar Task
+	// Listar Sale
 	@RequestMapping
-	public ModelAndView pesquisar(@ModelAttribute("filtro") TaskFilter filtro) {
-		List<Task> allTask = cadastrotaskservice.filtrar(filtro);
-		ModelAndView mv = new ModelAndView(LIST_TASK_VIEW);
-		mv.addObject("tasks", allTask);
+	public ModelAndView pesquisar(@ModelAttribute("filtro") SaleFilter filtro) {
+		List<Sale> allSale = cadastroSaleservice.filtrar(filtro);
+		ModelAndView mv = new ModelAndView(LIST_SALE_VIEW);
+		mv.addObject("sales", allSale);
 		return mv;
 	}
 
 	// PesquisaComboTipos
-	@ModelAttribute("todasTasks")
-	public List<TipoTask> todasTasks() {
-		return Arrays.asList(TipoTask.values());
+	@ModelAttribute("todasSales")
+	public List<TypeRecipe> todasSales() {
+		return Arrays.asList(TypeRecipe.values());
 	}
 
 	// PesquisaComboStauts
-	@ModelAttribute("todasTasksStatus")
-	public List<StatusTask> todasTasksStatus() {
-		return Arrays.asList(StatusTask.values());
+	@ModelAttribute("todasSalesStatus")
+	public List<Status> todasSalesStatus() {
+		return Arrays.asList(Status.values());
 	}
 
 	// Editar
 	@RequestMapping("{codigo}")
-	public ModelAndView edicao(@PathVariable("codigo") Task task) {
+	public ModelAndView edicao(@PathVariable("codigo") Sale sale) {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
-		mv.addObject(task);
+		mv.addObject(sale);
 		List<User> allUsers = users.findAll();
 		mv.addObject("tdusers", allUsers);
 		List<Client> allClients = clients.findAll();
@@ -139,26 +133,23 @@ public class TaskController {
 		return mv;
 	}
 
-	// Detalhes Task
+	// Detalhes Sale
 	@RequestMapping("detalhes/{codigo}")
-	public ModelAndView exibir(@PathVariable("codigo") Task task) {
-		ModelAndView mv = new ModelAndView(DETALHE_TASK_VIEW);
-		mv.addObject(task);
+	public ModelAndView exibir(@PathVariable("codigo") Sale sale) {
+		ModelAndView mv = new ModelAndView(DETALHE_SALE_VIEW);
+		mv.addObject(sale);
 		List<Hora> allHoras = horas.findAll();
 		mv.addObject("horas", allHoras);
 		List<User> allUsers = users.findAll();
 		mv.addObject("tdusers", allUsers);
-		List<Anexo> allAnexos = anexos.findAll();
-		mv.addObject("anexos", allAnexos);
-
 		return mv;
 	}
 
 	// Excluir
 	@RequestMapping("delete/{codigo}")
 	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
-		cadastrotaskservice.excluir(codigo);
-		attributes.addFlashAttribute("mensagem", "Task excluída com sucesso!");
+		cadastroSaleservice.excluir(codigo);
+		attributes.addFlashAttribute("mensagem", "Pedido excluída com sucesso!");
 		return "redirect:/ithappens/";
 	}
 
