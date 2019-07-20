@@ -79,27 +79,20 @@ $('#confirmacaoExclusaoHorasModal').on('show.bs.modal', function(event) {
 			
 });
 
-
-//AddHoras
-$('#addHoras').on('show.bs.modal', function(event) {
-	var button = $(event.relatedTarget);
-	
-	var codigoSale = button.data('codigo');
-	var tipo = button.data('tipo');
-	var titulo = button.data('titulo');
-	
+//AddItemsPedido
+$('#addOrderedItems').on('show.bs.modal', function(event) {
+	var button = $(event.relatedTarget);	
+	var codigoTask = button.data('codigo');	
 	var modal = $(this);
 	var form = modal.find('form');
 	var action = form.data('url-base');
 
-	form.attr('action', action);
-	
-	document.querySelector("[name='sales']").value = codigoSale;
-
-		
-	modal.find('.modal-body p').html('Sale:<strong> '+codigoSale+' - '+tipo+'</strong> - ' + titulo);
+	form.attr('action', action);	
+	document.querySelector("[name='sales']").value = codigoTask;		
+	modal.find('.modal-body p').html('Task:<strong> '+codigoTask);
 
 });
+
 
 
 //login

@@ -22,17 +22,6 @@ public class User {
 	@OneToMany(mappedBy = "users")
 	private List<Sale> sales;
 
-	@OneToMany(mappedBy = "users")
-	private List<OrderedItem> orderedItems;
-
-	public List<OrderedItem> getOrderedItems() {
-		return orderedItems;
-	}
-
-	public void setOrderedItems(List<OrderedItem> orderedItems) {
-		this.orderedItems = orderedItems;
-	}
-
 	public Long getCodigo() {
 		return codigo;
 	}

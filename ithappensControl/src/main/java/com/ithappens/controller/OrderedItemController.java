@@ -55,7 +55,7 @@ public class OrderedItemController {
 		List<OrderedItem> allOrderedItems = orderedItems.findAll();
 		ModelAndView mv = new ModelAndView(LIST_ORDEREDITEMS_VIEW);
 		mv.addObject(new OrderedItem());
-		mv.addObject("OrderedItems", allOrderedItems);
+		mv.addObject("orderedItems", allOrderedItems);
 		return mv;
 	}
 	
@@ -66,7 +66,7 @@ public class OrderedItemController {
 		ModelAndView mv = new ModelAndView(LIST_ORDEREDITEMS_USER_VIEW);
 		mv.addObject(user);
 		List<OrderedItem> allOrderedItems = orderedItems.findAll();
-		mv.addObject("OrderedItems", allOrderedItems);
+		mv.addObject("orderedItems", allOrderedItems);
 		return mv;
 	}
 	

@@ -162,82 +162,62 @@
 
 				<div class="tab-pane active" id="tab1">
 					<div class="panel-body">
-
 						<div class="panel">
 							<!--Pedidos-->
 							<a class="btn btn-success" data-toggle="modal"
 								data-target="#addOrderedItems"
-								sec:authorize="hasRole('ROLE_USER')"
-								th:attr="data-codigo=${sale.codigo}, data-tipo=${sale.tipo}, data-titulo=${sale.descricao}"
+								th:attr="data-codigo=${sale.codigo}"
 								title="Lançar Pedidos nessa venda" rel="tooltip"
 								data-placement="bottom"> <span
 								class="glyphicon glyphicon-time"></span>Add Pedidos
 							</a>
-
 						</div>
 
 						<!-- tabelas de Pedidoss BEGIN -->
-						<div class="table-responsive"
-							th:if="${not #lists.isEmpty(orderedItems)}">
-							<table id="tbOrderedItemsDetalhe" class="table table-hover ">
-
-								<thead class="table-bordered"
-									th:if="${not #lists.isEmpty(orderedItems)}">
+						<div class="table-responsive">
+							<table id="tbHorasDetalhe" class="table table-hover ">
+								<thead class="table-bordered">
 									<tr>
-										<th id="HSData" class="text-left ">Data</th>
-										<th id="HSOrderedItems" class="text-left">Pedidos</th>
-										<th id="HSDescricao" class="text-left">Descrição</th>
-										<th id="HSResponsavel" class="text-left">Usuario</th>
-										<th id="HSAcao"
-											class="text-center col-md-1 glyphicon glyphicon-trash"></th>
+										<th id="HSData" class="text-left col-md-1">Cod. Pedido</th>
+										<th id="HSData" class="text-left col-md-1">Cod. Produto</th>
+										<th id="HSData" class="text-left col-md-7">Produto</th>
+										<th id="HSData" class="col-md-1">V. Unitário</th>
+										<th id="HSData" class="col-md-1">Quantidade</th>
+										<th id="HSData" class="col-md-1">V. Pedido</th>
+										<th id="HSAcao" class="text-center col-md-1 glyphicon glyphicon-trash"></th>
 									</tr>
 								</thead>
 
 								<tbody>
-									<tr th:each="orderedItem : ${orderedItems}"
-										th:if="${sale.codigo == orderedItem.sales.codigo}">
-
-
-										<td id="HSData"></td>
-										<td id="HSOrderedItems"></td>
-										<td id="HSDescricao"><a class="text-left"
-											th:text="${orderedItem.descricao}"
-											th:href="@{/ithappens/orderedItems/{codigo}(codigo=${orderedItem.codigo})}"></a></td>
-										<td id="HSResponsavel"><a class="text-left"
-											th:text=" | ${{orderedItem.users.nome}} |"
-											th:href="@{/ithappens/orderedItems/user/list/{codigo}(codigo=${orderedItem.users.codigo})}"></a></td>
-										<td id="HSacao" class="text-center"><a
-											class="btn btn-link btn-xs" data-toggle="modal"
-											data-target="#confirmacaoExclusaoOrderedItemsModal"
-											th:attr="data-codigo=${orderedItem.codigo},data-titulo=${orderedItem.descricao}"
-											title="Excluir" rel="tooltip" data-placement="bottom"> <span
-												class="glyphicon glyphicon-trash"></span>
-										</a></td>
-									</tr>
-									<tr>
-
-										<td colspan="6" th:if="${#lists.isEmpty(orderedItems)}">Nehuma
-											Pedido cadastrada para essa Venda!</td>
-									</tr>
-
-								</tbody>
+					   				<tr th:each="items : ${orderedItems}">
+					   					<td id="HSData">  <a class="text-right "  th:text="${items.codigo}"></a> </td>
+					   					<td id="HSData">  <a class="text-right "  th:text="${items.codigo}"></a> </td>
+					   					<td id="HSData">  <a class="text-right "  th:text="${items.codigo}"></a> </td>
+					   					<td id="HSData">  <a class="text-left "  th:text="${items.codigo}"></a> </td>
+					   					<td id="HSData">  <a class="text-left "  th:text="${items.qtdProduct}"></a> </td>
+					   					<td id="HSData">  <a class="text-left "  th:text="${items.totalValue}"></a> </td>
+					   					<td id="HSacao" class="text-center">											
+											<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoHorasModal"
+												title="Excluir"  rel="tooltip" data-placement="bottom">
+					   							<span class="glyphicon glyphicon-trash"></span>
+					   						</a>
+						   				</td>		   						
+					   				</tr>
+					   				<tr>					   				
+				   						<td colspan="6" th:if="${#lists.isEmpty(orderedItems)}">Nehuma pedido cadastrada para essa Venda!</td>
+				   					</tr>				   					
+					   			</tbody>
 							</table>
 						</div>
 						<!-- tabelas de Pedidos END -->
-
 					</div>
 				</div>
-
 			</div>
-
 		</section>
 
-
-		<div
-			th:replace="pages/CadastroOrderedItemsModal :: addOrderedItems-modal"></div>
+		<div th:replace="pages/CadastroOrderedItemsModal :: addOrderedItems-modal"></div>
 		<div th:replace="layout/DialogoConfirmacaoExclusao :: excluir-modal"></div>
-		<div
-			th:replace="layout/DialogoConfirmacaoOrderedItemsExclusao :: excluir-orderedItems-modal"></div>
+		<div th:replace="layout/DialogoConfirmacaoOrderedItemsExclusao :: excluir-orderedItems-modal"></div>
 	</div>
 
 </section>

@@ -3,56 +3,53 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<div class="modal fade" id="addOrderedItems" tabindex="-1" data-keyboard="false" data-backdrop="static" th:fragment="addOrderedItems-modal">
+<div class="modal fade" id="addOrderedItems" tabindex="-1"
+	data-keyboard="false" data-backdrop="static"
+	th:fragment="addOrderedItems-modal">
 	<div class="modal-dialog">
-		<form th:attr="data-url-base=@{/ithappens/orderedItems}" method="POST" th:object="${orderedItem}">
-			
+		<form th:attr="data-url-base=@{/ithappens/orderedItems}" method="POST"
+			th:object="${orderedItem}">
+
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Cadastro de Pedidoss</h4>
+					<h4 class="modal-title">Cadastro de Pedidos</h4>
 				</div>
 				<div class="modal-body col-md-12">
-					<p class="alert detalhes">Erro no JS sale</p>
-					
-					
-					<input type="hidden"  name='sales'  value='sales' id="sales"/>
-				
-					<div class="form-group">					
-						
+					<input type="hidden" name='sales' value='sales' id="sales" />
+					<div class="form-group">
+						<div class="col-md-8">
+							<label for="produtos" class="control-label">Produto:</label> <select
+								class="form-control" name="produtos">
+								<option th:each="produtos : ${tdprodutos}"
+									th:value="${produtos.codigo}" th:text="${produtos.nome}">
+								</option>
+							</select>
+						</div>
+
 						<div class="col-md-4">
-							<label for="dataOrderedItem" class="control-label">Data:
-							<span class="text-danger">*</span></label> <input type="text" class="form-control" id="dataOrderedItem"
-								name="dataOrderedItem" data-provide="datepicker" 
-								data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
-								data-date-autoclose="true" data-date-today-highlight="true"
-								data-date-orientation="bottom"/>
-							<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>
-						</div>
-						
-						<div class="col-md-3">
-							<label for="OrderedItems" class="control-label">Pedidoss:</label>
-							<input type="text"  class="form-control"  id="orderedItems" placeholder="0,0" name="orderedItems" />
-						</div>
-						
-						<div class="col-md-5">
-						<label for="users" class="control-label">Usuário:</label>
-						<select class="form-control" name="users" >
-							<option th:each="users : ${tdusers}"  
-								th:value="${users.codigo}" th:text="${users.nome}">
-							</option>
-						</select>
+							<label for="value" class="control-label">Valor unitário</label>
+							<input type="text" class="form-control" id="value" name="value" readonly/>
 						</div>
 					</div>
-					<div class="form-group">										
-						<div class="col-md-12">
-							<label for="descricao" class="control-label">Descricão:</label>
-							<input type="text" class="form-control" id="descricao" name="descricao"/>
+					<div class="form-group">
+						<div class="col-md-3">
+							<label for="qtdProduct" class="control-label">Qtd.
+								Produto:</label> <input type="number" class="form-control"
+								id="qtdProduct" name="qtdProduct" />
 						</div>
-					
-					</div>	
-					
+
+
+						<div class="col-md-5">
+							<label for="status" class="control-label">Status:</label> <select
+								class="form-control" name="status">
+								<option th:each="status : ${tdstatus}" th:value="${status}"
+									th:text="${status.descricao}"></option>
+							</select>
+						</div>
+
+					</div>
 				</div>
-				
+
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Inserir</button>
 					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
@@ -61,7 +58,7 @@
 		</form>
 	</div>
 </div>
-	
+
 </html>
 
 

@@ -24,23 +24,11 @@ public class OrderedItem {
 	@JoinColumn(name = "cd_sale")
 	private Sale sales;
 
-	@ManyToOne
-	@JoinColumn(name = "codigo_users")
-	private User users;
-
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
 	public boolean isOpen() {
 		return Status.ATIVO.equals(this.status);
-	}
-
-	public User getUsers() {
-		return users;
-	}
-
-	public void setUsers(User users) {
-		this.users = users;
 	}
 
 	public Sale getSales() {

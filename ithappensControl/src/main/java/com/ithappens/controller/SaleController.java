@@ -50,7 +50,7 @@ public class SaleController {
 
 	@Autowired
 	private OrderedItems orderedItems;
-		
+			
 	// Cadastro Novo
 	@RequestMapping("/novo")
 	public ModelAndView novo(@ModelAttribute("filtro") SaleFilter filtro) {
@@ -68,7 +68,7 @@ public class SaleController {
 		return users.findAll();
 	}
 	
-	// Combo Users
+	// Combo Clientes
 	@ModelAttribute("tdclients")
 	public List<Client> tdclients() {
 		return clients.findAll();
@@ -79,7 +79,7 @@ public class SaleController {
 	public List<Branch> tdbranchs() {
 		return branchs.findAll();
 	}
-	
+		
 		
 	// Salvar
 	@RequestMapping(method = RequestMethod.POST)
@@ -142,8 +142,16 @@ public class SaleController {
 		mv.addObject("orderedItems", allOrderedItems);
 		List<User> allUsers = users.findAll();
 		mv.addObject("tdusers", allUsers);
+		List<Status> allStatus = Arrays.asList(Status.values());
+		mv.addObject("tdstatus", allStatus);
 		return mv;
 	}
+	
+	// PesquisaComboStauts
+//		@ModelAttribute("todasSalesStatus")
+//		public List<Status> todasSalesStatus() {
+//			return Arrays.asList(Status.values());
+//		}
 
 	// Excluir
 	@RequestMapping("delete/{codigo}")
